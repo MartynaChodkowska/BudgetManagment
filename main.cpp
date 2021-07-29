@@ -1,9 +1,14 @@
 #include <iostream>
 
+#include "BudgetManagment.h"
+
 using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    BudgetManagment budget;
+
+    budget.registerUser();
+
     return 0;
 }
