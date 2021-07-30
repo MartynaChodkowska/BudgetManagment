@@ -41,20 +41,36 @@
 1627566265 source:c:\_mcho\_c++\budgetmanagment\usermanager.cpp
 	"UserManager.h"
 
-1627588721 c:\_mcho\_c++\budgetmanagment\usermanager.h
+1627630525 c:\_mcho\_c++\budgetmanagment\usermanager.h
 	<iostream>
 	<vector>
 	"User.h"
 
-1627588720 c:\_mcho\_c++\budgetmanagment\budgetmanagment.h
+1627630525 c:\_mcho\_c++\budgetmanagment\budgetmanagment.h
 	<iostream>
 	"UserManager.h"
 
-1627588720 source:c:\_mcho\_c++\budgetmanagment\textfile.cpp
+1627630525 source:c:\_mcho\_c++\budgetmanagment\textfile.cpp
 	"TextFile.h"
 
-1627629983 c:\_mcho\_c++\budgetmanagment\textfile.h
+1627631667 c:\_mcho\_c++\budgetmanagment\textfile.h
 	<iostream>
 	<fstream>
 	<vector>
+
+1627630525 source:c:\_mcho\_c++\budgetmanagment\usersfile.cpp
+	"UsersFile.h"
+
+1627630525 c:\_mcho\_c++\budgetmanagment\usersfile.h
+	<iostream>
+	<vector>
+	"TextFile.h"
+	"User.h"
+
+1627631536 source:c:\_mcho\_c++\budgetmanagment\supportingmethods.cpp
+	"SupportingMethods.h"
+
+1627631667 c:\_mcho\_c++\budgetmanagment\supportingmethods.h
+	<iostream>
+	<sstream>
 

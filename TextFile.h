@@ -5,6 +5,8 @@
 #include <fstream>
 #include <vector>
 
+//#include "SupportingMethods.h"
+
 using namespace std;
 
 class TextFile{

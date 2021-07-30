@@ -97,7 +97,7 @@ User UsersFile::getUserData(string userDataSeparetedByVerticalDashes) {
 string UsersFile::replaceUserDataWithLineWithVerticalDashes(User user) {
     string lineWithUserData = "";
 
-    //lineWithUserData += MetodyPomocnicze::konwersjaIntNaString(user.pobierzId())+ '|';
+    lineWithUserData += SupportingMethods::conversionFromIntToString(user.getId())+ '|';
     lineWithUserData += user.getName() + '|';
     lineWithUserData += user.getSecondname() + '|';
     lineWithUserData += user.getLogin() + '|';
