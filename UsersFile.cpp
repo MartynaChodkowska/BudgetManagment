@@ -2,62 +2,62 @@
 
 void UsersFile::addUserToFile(User user) {
     string lineWithUserData = "";
-    fstream textFile;
-    textFile.open(getFilename().c_str(), ios::app);
+    fstream xmlFile;
+    xmlFile.open(getFilename().c_str(), ios::app);
 
-    if (textFile.good() == true) {
+    if (xmlFile.good() == true) {
         lineWithUserData = replaceUserDataWithLineWithVerticalDashes(user);
 
         if (isFileEmpty() == true) {
-            textFile << lineWithUserData;
+            xmlFile << lineWithUserData;
         } else {
-            textFile << endl << lineWithUserData ;
+            xmlFile << endl << lineWithUserData ;
         }
     } else
         cout << "I cannot open the file " << getFilename() << " and save the data in it." << endl;
-    textFile.close();
+    xmlFile.close();
 }
 
 vector<User> UsersFile::loadUsersFromFile() {
     vector <User> usersVector;
     User user;
-    fstream textFile;
+    fstream xmlFile;
     string userDataSeparetedByVerticalDashes = "";
 
-    textFile.open(getFilename().c_str(), ios::in);
+    xmlFile.open(getFilename().c_str(), ios::in);
 
-    if (textFile.good() == true) {
-        while (getline(textFile, userDataSeparetedByVerticalDashes)) {
+    if (xmlFile.good() == true) {
+        while (getline(xmlFile, userDataSeparetedByVerticalDashes)) {
             user = getUserData(userDataSeparetedByVerticalDashes);
             usersVector.push_back(user);
         }
-        textFile.close();
+        xmlFile.close();
     }
     return usersVector;
 }
 
 void UsersFile::saveAllUsersToFile(vector<User> users){
-fstream textFile;
+fstream xmlFile;
     string lineWithUserData = "";
     vector <User>::iterator itrEnd = --users.end();
 
-    textFile.open(getFilename().c_str(), ios::out);
+    xmlFile.open(getFilename().c_str(), ios::out);
 
-    if (textFile.good() == true) {
+    if (xmlFile.good() == true) {
         for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
             lineWithUserData = replaceUserDataWithLineWithVerticalDashes(*itr);
 
             if (itr == itrEnd) {
-                textFile << lineWithUserData;
+                xmlFile << lineWithUserData;
             } else {
-                textFile << lineWithUserData << endl;
+                xmlFile << lineWithUserData << endl;
             }
             lineWithUserData = "";
         }
     } else {
         cout << "The file cannot be opened " << getFilename() << endl;
     }
-    textFile.close();
+    xmlFile.close();
 
 }
 
