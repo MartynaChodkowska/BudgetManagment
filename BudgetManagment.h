@@ -1,5 +1,5 @@
-#ifndef BUDGET_MANAGMENT_H
-#define BUDGET_MANAGMENT_H
+#ifndef BUDGETMANAGMENT_H
+#define BUDGETMANAGMENT_H
 
 #include <iostream>
 
@@ -30,4 +30,4 @@ public:
 
 
 
-#endif // BUDGET_MANAGMENT_H
+#endif // BUDGETMANAGMENT_H

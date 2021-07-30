@@ -1,5 +1,5 @@
-#ifndef USER_MANAGER_H
-#define USER_MANAGER_H
+#ifndef USERMANAGER_H
+#define USERMANAGER_H
 
 #include <iostream>
 #include <vector>
@@ -30,4 +30,4 @@ public:
 };
 
 
-#endif // USER_MANAGER_H
+#endif // USERMANAGER_H
