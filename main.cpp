@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    BudgetManagment budget;
+    BudgetManagment budget("Users.txt");
 
     budget.registerUser();
 

@@ -3,14 +3,16 @@
 
 #include <iostream>
 #include <vector>
+
 #include "User.h"
+#include "UsersFile.h"
 
 using namespace std;
 
 class UserManager {
     int loggedInUserId;
     vector<User> users;
-    //UsersFile usersFile;
+    UsersFile usersFile;
     User giveNewUserData();
     int getNewUserData(User newUser);
     int getNewUserId();
@@ -18,8 +20,9 @@ class UserManager {
     bool isUserLoginExists();
 
 public:
-    UserManager() {
+    UserManager(string usersFilename) : usersFile(usersFilename) {
         loggedInUserId = 0;
+        users = usersFile.loadUsersFromFile();
     }
     void registerUser();
     int logInUser();
