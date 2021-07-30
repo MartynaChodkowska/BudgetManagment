@@ -30,6 +30,7 @@ public:
     void logOutUser();
     void getLoggedInUserId();
     void setLoggedInUserId();
+    void displayAllUsers();
 };
 
 

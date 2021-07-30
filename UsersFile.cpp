@@ -1,43 +1,65 @@
 #include "UsersFile.h"
 
 void UsersFile::addUserToFile(User user) {
-    string lineWithUserData = "";
-    fstream xmlFile;
-    xmlFile.open(getFilename().c_str(), ios::app);
+    CMarkup xmlFile;
+    xmlFile.Load(getFilename());
 
-    if (xmlFile.good() == true) {
-        lineWithUserData = replaceUserDataWithLineWithVerticalDashes(user);
+    if (!xmlFile.FindElem("USERS")) {
+        xmlFile.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+        xmlFile.AddElem("USERS");
+    }
+    xmlFile.IntoElem();
+    xmlFile.AddElem("USER");
+    xmlFile.IntoElem();
+    xmlFile.AddElem("USERID", to_string(user.getId()));
+    xmlFile.AddElem("LOGIN", user.getLogin());
+    xmlFile.AddElem("PASSWORD", user.getPassword());
+    xmlFile.AddElem("NAME", user.getName());
+    xmlFile.AddElem("SECONDNAME", user.getSecondname());
+    xmlFile.OutOfElem();
 
-        if (isFileEmpty() == true) {
-            xmlFile << lineWithUserData;
-        } else {
-            xmlFile << endl << lineWithUserData ;
-        }
-    } else
-        cout << "I cannot open the file " << getFilename() << " and save the data in it." << endl;
-    xmlFile.close();
+    xmlFile.Save(getFilename());
 }
 
 vector<User> UsersFile::loadUsersFromFile() {
     vector <User> usersVector;
     User user;
-    fstream xmlFile;
-    string userDataSeparetedByVerticalDashes = "";
+    CMarkup xmlFile;
 
-    xmlFile.open(getFilename().c_str(), ios::in);
+    xmlFile.Load(getFilename());
+    xmlFile.ResetMainPos();
 
-    if (xmlFile.good() == true) {
-        while (getline(xmlFile, userDataSeparetedByVerticalDashes)) {
-            user = getUserData(userDataSeparetedByVerticalDashes);
+    if (xmlFile.FindElem("USERS")) {
+        xmlFile.IntoElem();
+        while(xmlFile.FindElem("USER")) {
+            xmlFile.IntoElem();
+
+            xmlFile.FindElem("USERID");
+            int userId = atoi(MCD_2PCSZ(xmlFile.GetData()));
+
+            xmlFile.FindElem("LOGIN");
+            string userLogin = xmlFile.GetData();
+
+            xmlFile.FindElem("NAME");
+            string userName = xmlFile.GetData();
+
+            xmlFile.FindElem("SECONDNAME");
+            string userSecondname = xmlFile.GetData();
+
+            user.setId(userId);
+            user.setLogin(userLogin);
+            user.setName(userName);
+            user.setSecondname(userSecondname);
             usersVector.push_back(user);
+
+            xmlFile.OutOfElem();
         }
-        xmlFile.close();
     }
-    return usersVector;
+return usersVector;
 }
 
-void UsersFile::saveAllUsersToFile(vector<User> users){
-fstream xmlFile;
+void UsersFile::saveAllUsersToFile(vector<User> users) {
+    fstream xmlFile;
     string lineWithUserData = "";
     vector <User>::iterator itrEnd = --users.end();
 
@@ -78,7 +100,7 @@ User UsersFile::getUserData(string userDataSeparetedByVerticalDashes) {
                 user.setName(singleUserData);
                 break;
             case 3:
-                   user.setSecondname(singleUserData);
+                user.setSecondname(singleUserData);
                 break;
             case 4:
                 user.setLogin(singleUserData);

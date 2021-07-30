@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
+#include "Markup.h"
 #include "XMLFile.h"
 #include "User.h"
 #include "SupportingMethods.h"
