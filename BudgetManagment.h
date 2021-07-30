@@ -11,15 +11,15 @@ class BudgetManagment {
     UserManager userManager;
 
 public:
-   // BudgetManagment();
-   // ~BudgetManagment();
+    BudgetManagment(string usersFilename) : userManager(usersFilename){};
+    // ~BudgetManagment();
     void registerUser();
     int logInUser();
- //   void addIncome();
- //   void addExpense();
- //   void currentMonthBalanceSheet();
- //   void previousMonthBalanceSheet();
- //   void selectedPeriodBalanceSheet();
+//   void addIncome();
+//   void addExpense();
+//   void currentMonthBalanceSheet();
+//   void previousMonthBalanceSheet();
+//   void selectedPeriodBalanceSheet();
     void loggedInUserPasswordChange();
     void logOutUser();
     bool isUserLoggedIn();
