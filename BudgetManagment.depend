@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1627566265 source:c:\_mcho\_c++\budgetmanagment\main.cpp
+1627646793 source:c:\_mcho\_c++\budgetmanagment\main.cpp
 	<iostream>
 	"BudgetManagment.h"
 
@@ -35,37 +35,39 @@
 1627566265 c:\_mcho\_c++\budgetmanagment\date.h
 	<iostream>
 
-1627566265 source:c:\_mcho\_c++\budgetmanagment\budgetmanagment.cpp
+1627635383 source:c:\_mcho\_c++\budgetmanagment\budgetmanagment.cpp
 	"BudgetManagment.h"
 
-1627633490 source:c:\_mcho\_c++\budgetmanagment\usermanager.cpp
+1627646842 source:c:\_mcho\_c++\budgetmanagment\usermanager.cpp
 	"UserManager.h"
 
-1627633490 c:\_mcho\_c++\budgetmanagment\usermanager.h
+1627635181 c:\_mcho\_c++\budgetmanagment\usermanager.h
 	<iostream>
 	<vector>
 	"User.h"
 	"UsersFile.h"
 
-1627633638 c:\_mcho\_c++\budgetmanagment\budgetmanagment.h
+1627635181 c:\_mcho\_c++\budgetmanagment\budgetmanagment.h
 	<iostream>
 	"UserManager.h"
 
-1627630525 source:c:\_mcho\_c++\budgetmanagment\textfile.cpp
+1627634045 source:c:\_mcho\_c++\budgetmanagment\textfile.cpp
 	"TextFile.h"
 
-1627631753 c:\_mcho\_c++\budgetmanagment\textfile.h
+1627634044 c:\_mcho\_c++\budgetmanagment\textfile.h
 	<iostream>
 	<fstream>
 	<vector>
 
-1627631753 source:c:\_mcho\_c++\budgetmanagment\usersfile.cpp
+1627646793 source:c:\_mcho\_c++\budgetmanagment\usersfile.cpp
 	"UsersFile.h"
 
-1627633490 c:\_mcho\_c++\budgetmanagment\usersfile.h
+1627634711 c:\_mcho\_c++\budgetmanagment\usersfile.h
 	<iostream>
 	<vector>
-	"TextFile.h"
+	<string>
+	"Markup.h"
+	"XMLFile.h"
 	"User.h"
 	"SupportingMethods.h"
 
@@ -75,4 +77,12 @@
 1627631753 c:\_mcho\_c++\budgetmanagment\supportingmethods.h
 	<iostream>
 	<sstream>
+
+1627634125 c:\_mcho\_c++\budgetmanagment\xmlfile.h
+	<iostream>
+	<fstream>
+	<vector>
+
+1627634125 source:c:\_mcho\_c++\budgetmanagment\xmlfile.cpp
+	"XMLFile.h"
 

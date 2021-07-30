@@ -25,6 +25,7 @@ public:
     bool isUserLoggedIn();
     char selectOptionFromMainMenu();
     char selectOptionFromUserMenu();
+    void displayAllUsers();
 };
 
 

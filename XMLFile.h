@@ -1,5 +1,5 @@
-#ifndef TEXTFILE_H
-#define TEXTFILE_H
+#ifndef XMLFILE_H
+#define XMLFILE_H
 
 #include <iostream>
 #include <fstream>
@@ -9,14 +9,14 @@
 
 using namespace std;
 
-class TextFile{
+class XMLFile{
     const string FILENAME;
 
 public:
-    TextFile(string fileName) : FILENAME(fileName) {}
+    XMLFile(string fileName) : FILENAME(fileName) {}
 
     string getFilename();
     bool isFileEmpty();
 };
 
-#endif // TEXTFILE_H
+#endif // XMLFILE_H

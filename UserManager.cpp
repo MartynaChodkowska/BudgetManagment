@@ -57,6 +57,14 @@ bool UserManager::isLoginExists(string login) {
 int UserManager::getNewUserId() {
     if (users.empty() == true)
         return 1;
-    else
+    else {
         return users.back().getId()+1;
+    }
+}
+
+void UserManager::displayAllUsers() {
+    for (vector<User>::iterator itr = users.begin(); itr != users.end(); itr++) {
+        cout << itr->getId() << endl;
+        cout << itr->getLogin() << endl;
+    }
 }
