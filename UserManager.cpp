@@ -11,7 +11,7 @@ void UserManager::registerUser() {
     system("pause");
 }
 
-void UserManager::logInUser(){
+void UserManager::logInUser() {
     User user;
     string login = "", password = "";
 
@@ -21,7 +21,7 @@ void UserManager::logInUser(){
 
     for (int i = 0; i < users.size(); i++) {
         if (users[i].getLogin() == login) {
-                cout<< "szukamy hasla dla loginu " << users[i].getLogin() << endl;
+            cout<< "szukamy hasla dla loginu " << users[i].getLogin() << endl;
             for (int tryNumber = 3; tryNumber > 0; tryNumber--) {
                 cout << "Enter password. There is " << tryNumber << " attempts left: ";
                 password = SupportingMethods::loadLine();
@@ -94,6 +94,13 @@ int UserManager::getNewUserId() {
     else {
         return users.back().getId()+1;
     }
+}
+
+bool UserManager::isUserLoggedIn() {
+    if (loggedInUserId > 0)
+        return true;
+    else
+        return false;
 }
 
 void UserManager::displayAllUsers() {
