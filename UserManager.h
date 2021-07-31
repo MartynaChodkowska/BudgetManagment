@@ -17,6 +17,7 @@ class UserManager {
    // int getNewUserData(User newUser);
     int getNewUserId();
     bool isLoginExists(string login);
+
    // bool isUserLoginExists();
 
 public:
@@ -31,6 +32,7 @@ public:
     void getLoggedInUserId();
     void setLoggedInUserId();
     void displayAllUsers();
+    bool isUserLoggedIn();
 };
 
 
