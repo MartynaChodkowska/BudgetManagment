@@ -8,7 +8,8 @@ int main() {
     BudgetManagment budget("Users.xml");
 
     budget.displayAllUsers();
-    budget.registerUser();
+    //budget.registerUser();
+    budget.logInUser();
 
     return 0;
 }
