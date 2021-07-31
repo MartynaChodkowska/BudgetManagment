@@ -63,28 +63,41 @@ vector<User> UsersFile::loadUsersFromFile() {
 }
 
 void UsersFile::saveAllUsersToFile(vector<User> users) {
-    fstream xmlFile;
+    CMarkup xmlFile;
     string lineWithUserData = "";
     vector <User>::iterator itrEnd = --users.end();
 
-    xmlFile.open(getFilename().c_str(), ios::out);
+    clearFile();
 
-    if (xmlFile.good() == true) {
-        for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
-            lineWithUserData = replaceUserDataWithLineWithVerticalDashes(*itr);
+    xmlFile.Load(getFilename());
 
-            if (itr == itrEnd) {
-                xmlFile << lineWithUserData;
-            } else {
-                xmlFile << lineWithUserData << endl;
-            }
-            lineWithUserData = "";
-        }
-    } else {
-        cout << "The file cannot be opened " << getFilename() << endl;
+    if (!xmlFile.FindElem("USERS")) {
+        xmlFile.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+        xmlFile.AddElem("USERS");
     }
-    xmlFile.close();
+    for (vector<User>::iterator itr = users.begin(); itr != users.end(); itr ++) {
+        xmlFile.IntoElem();
+        xmlFile.AddElem("USER");
+        xmlFile.IntoElem();
+        xmlFile.AddElem("USERID", to_string(itr->getId()));
+        xmlFile.AddElem("LOGIN", itr->getLogin());
+        xmlFile.AddElem("PASSWORD", itr->getPassword());
+        xmlFile.AddElem("NAME", itr->getName());
+        xmlFile.AddElem("SECONDNAME", itr->getSecondname());
+        xmlFile.OutOfElem();
+    }
+    xmlFile.Save(getFilename());
+}
 
+void UsersFile::clearFile(){
+ CMarkup xmlfile;
+ xmlfile.Load(getFilename());
+
+ xmlfile.ResetMainPos();
+ while (xmlfile.FindElem()){
+    xmlfile.RemoveElem();
+ }
+  xmlfile.Save(getFilename());
 }
 
 User UsersFile::getUserData(string userDataSeparetedByVerticalDashes) {

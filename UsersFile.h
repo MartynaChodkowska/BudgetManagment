@@ -16,10 +16,12 @@ class UsersFile :public XMLFile {
 
     User getUserData(string userDataSeparatedByVerticalDashes);
     string replaceUserDataWithLineWithVerticalDashes(User user);
+    void clearFile();
 
 public:
 
-    UsersFile(string usersFilename) : XMLFile(usersFilename) {};
+    UsersFile(string usersFilename)
+    : XMLFile(usersFilename) {};
     void addUserToFile(User user);
     vector<User> loadUsersFromFile();
     void saveAllUsersToFile(vector<User> users);

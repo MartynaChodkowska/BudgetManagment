@@ -7,8 +7,22 @@ void UserManager::registerUser() {
     users.push_back(user);
     usersFile.addUserToFile(user);
 
-    cout << endl << "account has been created" << endl << endl;
+    cout << endl << "your account has been created" << endl << endl;
     system("pause");
+}
+
+void UserManager::loggedInUserPasswordChange(){
+    string newPassword = "";
+    cout << "enter new password: ";
+    newPassword = SupportingMethods::loadLine();
+    for (int i = 0; i < users.size(); i++) {
+        if (users[i].getId() == loggedInUserId) {
+            users[i].setPassword(newPassword);
+            cout << "your password has been changed" << endl << endl;
+            system("pause");
+        }
+    }
+    usersFile.saveAllUsersToFile(users);
 }
 
 void UserManager::logInUser() {
