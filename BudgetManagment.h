@@ -14,7 +14,7 @@ public:
     BudgetManagment(string usersFilename) : userManager(usersFilename){};
     // ~BudgetManagment();
     void registerUser();
-    int logInUser();
+    void logInUser();
 //   void addIncome();
 //   void addExpense();
 //   void currentMonthBalanceSheet();

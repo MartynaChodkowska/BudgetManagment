@@ -40,6 +40,9 @@ vector<User> UsersFile::loadUsersFromFile() {
             xmlFile.FindElem("LOGIN");
             string userLogin = xmlFile.GetData();
 
+            xmlFile.FindElem("PASSWORD");
+            string userPassword = xmlFile.GetData();
+
             xmlFile.FindElem("NAME");
             string userName = xmlFile.GetData();
 
@@ -48,6 +51,7 @@ vector<User> UsersFile::loadUsersFromFile() {
 
             user.setId(userId);
             user.setLogin(userLogin);
+            user.setPassword(userPassword);
             user.setName(userName);
             user.setSecondname(userSecondname);
             usersVector.push_back(user);
@@ -55,7 +59,7 @@ vector<User> UsersFile::loadUsersFromFile() {
             xmlFile.OutOfElem();
         }
     }
-return usersVector;
+    return usersVector;
 }
 
 void UsersFile::saveAllUsersToFile(vector<User> users) {

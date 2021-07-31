@@ -14,10 +14,10 @@ class UserManager {
     vector<User> users;
     UsersFile usersFile;
     User giveNewUserData();
-    int getNewUserData(User newUser);
+   // int getNewUserData(User newUser);
     int getNewUserId();
     bool isLoginExists(string login);
-    bool isUserLoginExists();
+   // bool isUserLoginExists();
 
 public:
     UserManager(string usersFilename) : usersFile(usersFilename) {
@@ -25,7 +25,7 @@ public:
         users = usersFile.loadUsersFromFile();
     }
     void registerUser();
-    int logInUser();
+    void logInUser();
     void loggedInUserPasswordChange();
     void logOutUser();
     void getLoggedInUserId();
