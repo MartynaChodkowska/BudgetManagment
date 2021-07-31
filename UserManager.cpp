@@ -21,12 +21,9 @@ void UserManager::logInUser() {
 
     for (int i = 0; i < users.size(); i++) {
         if (users[i].getLogin() == login) {
-            cout<< "szukamy hasla dla loginu " << users[i].getLogin() << endl;
             for (int tryNumber = 3; tryNumber > 0; tryNumber--) {
                 cout << "Enter password. There is " << tryNumber << " attempts left: ";
                 password = SupportingMethods::loadLine();
-                cout << "wpisane haslo: " << password << endl;
-                cout << "haslo z pliku: " << users[i].getPassword() << endl;
 
                 if (users[i].getPassword() == password) {
                     cout << endl << "you are logged in" << endl << endl;
@@ -43,6 +40,10 @@ void UserManager::logInUser() {
     cout << "There is no user with this login. Please try again.." << endl << endl;
     system("pause");
     return;
+}
+
+void UserManager::logOutUser() {
+    loggedInUserId = 0;
 }
 
 User UserManager::giveNewUserData() {

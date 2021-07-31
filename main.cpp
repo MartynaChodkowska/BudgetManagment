@@ -27,10 +27,10 @@ int main() {
                 system("pause");
                 break;
             }
-        } /*else {
+        } else {
             selection = budget.selectOptionFromUserMenu();
             switch (selection) {
-            case '1':
+           /* case '1':
                 budget.addIncome();
                 break;
             case '2':
@@ -47,12 +47,12 @@ int main() {
                 break;
             case '6':
                 budget.loggedInUserPasswordChange();
-                break;
+                break;*/
             case '7':
                 budget.logOutUser();
                 break;
             }
-        }*/
+        }
     }
 
     return 0;
