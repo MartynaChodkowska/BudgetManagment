@@ -15,11 +15,11 @@ bool BudgetManagment::isUserLoggedIn() {
     else
         return false;
 }
-/*
+
 void BudgetManagment::loggedInUserPasswordChange() {
     userManager.loggedInUserPasswordChange();
 }
-*/
+
 void BudgetManagment::logOutUser() {
     userManager.logOutUser();
 }

@@ -44,10 +44,10 @@ int main() {
                 break;
             case '5':
                 budget.selectedPeriodBalanceSheet();
-                break;
+                break;*/
             case '6':
                 budget.loggedInUserPasswordChange();
-                break;*/
+                break;
             case '7':
                 budget.logOutUser();
                 break;

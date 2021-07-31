@@ -4,6 +4,8 @@
 #include <iostream>
 #include <sstream>
 
+#include "Markup.h"
+
 using namespace std;
 
 class SupportingMethods {
@@ -17,8 +19,6 @@ public:
     static int conversionFromStringToInt();
     static string conversionFromIntToString(int number);
     static double calculateDifferenceBetweenIncomesAndExpenses();
-
-
 };
 
 
