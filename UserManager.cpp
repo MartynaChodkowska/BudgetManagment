@@ -11,7 +11,7 @@ void UserManager::registerUser() {
     system("pause");
 }
 
-void UserManager::loggedInUserPasswordChange(){
+void UserManager::loggedInUserPasswordChange() {
     string newPassword = "";
     cout << "enter new password: ";
     newPassword = SupportingMethods::loadLine();
@@ -116,6 +116,10 @@ bool UserManager::isUserLoggedIn() {
         return true;
     else
         return false;
+}
+
+int UserManager::getLoggedInUserId() {
+    return loggedInUserId;
 }
 
 void UserManager::displayAllUsers() {

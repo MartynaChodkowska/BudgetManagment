@@ -5,16 +5,17 @@ void BudgetManagment::registerUser() {
 }
 
 void BudgetManagment::logInUser() {
-    return userManager.logInUser();
+    userManager.logInUser();
+    if(userManager.isUserLoggedIn()) {
+        incomeManager = new IncomeManager(INCOMES_FILENAME, userManager.getLoggedInUserId());
+    }
 }
 
 
-bool BudgetManagment::isUserLoggedIn() {
-    if (userManager.isUserLoggedIn())
-        return true;
-    else
-        return false;
+void BudgetManagment::addIncome() {
+    incomeManager->addIncome();
 }
+
 
 void BudgetManagment::loggedInUserPasswordChange() {
     userManager.loggedInUserPasswordChange();
@@ -22,6 +23,15 @@ void BudgetManagment::loggedInUserPasswordChange() {
 
 void BudgetManagment::logOutUser() {
     userManager.logOutUser();
+    delete incomeManager;
+    incomeManager = NULL;
+}
+
+bool BudgetManagment::isUserLoggedIn() {
+    if (userManager.isUserLoggedIn())
+        return true;
+    else
+        return false;
 }
 
 char BudgetManagment::selectOptionFromMainMenu() {
