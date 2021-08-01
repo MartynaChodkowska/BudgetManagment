@@ -14,6 +14,7 @@ public:
     static char loadCharacter();
     static string loadLine();
     static int loadInteger();
+    static double loadDouble();
     static char selectOptionFromMainMenu();
     static char selectOptionFromUserMenu();
     static int conversionFromStringToInt();

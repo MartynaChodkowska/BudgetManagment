@@ -29,8 +29,8 @@ public:
     void logInUser();
     void loggedInUserPasswordChange();
     void logOutUser();
-    void getLoggedInUserId();
-    void setLoggedInUserId();
+    int getLoggedInUserId();
+    void setLoggedInUserId(); //is it necessary?
     void displayAllUsers();
     bool isUserLoggedIn();
 };

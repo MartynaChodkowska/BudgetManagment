@@ -85,7 +85,9 @@ void UsersFile::saveAllUsersToFile(vector<User> users) {
         xmlFile.AddElem("NAME", itr->getName());
         xmlFile.AddElem("SECONDNAME", itr->getSecondname());
         xmlFile.OutOfElem();
+        xmlFile.OutOfElem();
     }
+
     xmlFile.Save(getFilename());
 }
 

@@ -19,7 +19,6 @@ class UsersFile :public XMLFile {
     void clearFile();
 
 public:
-
     UsersFile(string usersFilename)
     : XMLFile(usersFilename) {};
     void addUserToFile(User user);
