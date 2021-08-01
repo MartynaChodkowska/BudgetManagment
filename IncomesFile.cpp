@@ -11,7 +11,7 @@ void IncomesFile::addIncomeToFile(Income income) {
     xmlFile.IntoElem();
     xmlFile.AddElem("INCOME");
     xmlFile.IntoElem();
-    xmlFile.AddElem("ID", to_string(income.getId()));
+    xmlFile.AddElem("INCOMEID", to_string(income.getId()));
     xmlFile.AddElem("USERID", to_string(income.getUserId()));
     xmlFile.AddElem("DATE", income.getDate());
     xmlFile.AddElem("AMOUNT", to_string(income.getAmount()));
