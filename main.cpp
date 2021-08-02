@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    BudgetManagment budget("Users.xml", "Incomes.xml");
+    BudgetManagment budget("Users.xml", "Incomes.xml", "Expenses.xml");
 
     char selection;
 
@@ -33,10 +33,10 @@ int main() {
             case '1':
                 budget.addIncome();
                 break;
-           /* case '2':
+            case '2':
                 budget.addExpense();
                 break;
-            case '3':
+           /* case '3':
                 budget.currentMonthBalanceSheet();
                 break;
             case '4':

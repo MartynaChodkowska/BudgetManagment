@@ -17,14 +17,14 @@ class IncomesFile :public XMLFile {
     Income income;
     Income getIncomeData();
 
+
 public:
     IncomesFile(string incomesFilename)
         : XMLFile (incomesFilename)
     {};
     void addIncomeToFile(Income income);
     vector<Income> loadIncomesFromFile(int loggedInUserId);
-
-
+        int getNumberOfIncomesInFile();
 };
 
 
