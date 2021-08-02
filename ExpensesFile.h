@@ -23,6 +23,7 @@ public:
     {};
     void addExpenseToFile(Expense expense);
     vector<Expense> loadExpensesFromFile(int loggedInUserId);
+    int getNumberOfExpensesInFile();
 
 
 };

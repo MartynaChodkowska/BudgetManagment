@@ -40,9 +40,6 @@ Income IncomeManager::giveNewIncomeData() {
 
 
 int IncomeManager::getNewIncomeId() {
-    if (incomes.empty() == true)
-        return 1;
-    else {
-        return incomes.back().getId()+1;
-    }
+  int numberOfIncomes = incomesFile.getNumberOfIncomesInFile();
+  return numberOfIncomes + 1;
 }

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1627841526 source:c:\_mcho\_c++\budgetmanagment\main.cpp
+1627842793 source:c:\_mcho\_c++\budgetmanagment\main.cpp
 	<iostream>
 	"BudgetManagment.h"
 
@@ -35,7 +35,7 @@
 1627566265 c:\_mcho\_c++\budgetmanagment\date.h
 	<iostream>
 
-1627841526 source:c:\_mcho\_c++\budgetmanagment\budgetmanagment.cpp
+1627842731 source:c:\_mcho\_c++\budgetmanagment\budgetmanagment.cpp
 	"BudgetManagment.h"
 
 1627841526 source:c:\_mcho\_c++\budgetmanagment\usermanager.cpp
@@ -47,10 +47,11 @@
 	"User.h"
 	"UsersFile.h"
 
-1627841526 c:\_mcho\_c++\budgetmanagment\budgetmanagment.h
+1627842793 c:\_mcho\_c++\budgetmanagment\budgetmanagment.h
 	<iostream>
 	"UserManager.h"
 	"IncomeManager.h"
+	"ExpenseManager.h"
 
 1627634045 source:c:\_mcho\_c++\budgetmanagment\textfile.cpp
 	"TextFile.h"
@@ -88,7 +89,7 @@
 1627647110 source:c:\_mcho\_c++\budgetmanagment\xmlfile.cpp
 	"XMLFile.h"
 
-1627841526 source:c:\_mcho\_c++\budgetmanagment\incomemanager.cpp
+1627891849 source:c:\_mcho\_c++\budgetmanagment\incomemanager.cpp
 	"IncomeManager.h"
 
 1627841526 source:c:\_mcho\_c++\budgetmanagment\income.cpp
@@ -98,7 +99,7 @@
 	<iostream>
 	"Operation.h"
 
-1627841526 c:\_mcho\_c++\budgetmanagment\incomemanager.h
+1627847082 c:\_mcho\_c++\budgetmanagment\incomemanager.h
 	<iostream>
 	<vector>
 	"Income.h"
@@ -106,7 +107,7 @@
 	"Operation.h"
 	"SupportingMethods.h"
 
-1627841526 c:\_mcho\_c++\budgetmanagment\incomesfile.h
+1627847102 c:\_mcho\_c++\budgetmanagment\incomesfile.h
 	<iostream>
 	<stdlib.h>
 	<fstream>
@@ -115,7 +116,7 @@
 	"XMLFile.h"
 	"Income.h"
 
-1627842281 source:c:\_mcho\_c++\budgetmanagment\incomesfile.cpp
+1627847191 source:c:\_mcho\_c++\budgetmanagment\incomesfile.cpp
 	"IncomesFile.h"
 
 1627842281 source:c:\_mcho\_c++\budgetmanagment\expense.cpp
@@ -128,7 +129,7 @@
 1627842418 source:c:\_mcho\_c++\budgetmanagment\expensesfile.cpp
 	"ExpensesFile.h"
 
-1627842370 c:\_mcho\_c++\budgetmanagment\expensesfile.h
+1627891849 c:\_mcho\_c++\budgetmanagment\expensesfile.h
 	<iostream>
 	<stdlib.h>
 	<fstream>
@@ -136,4 +137,15 @@
 	"Markup.h"
 	"XMLFile.h"
 	"Expense.h"
+
+1627891849 source:c:\_mcho\_c++\budgetmanagment\expensemanager.cpp
+	"ExpenseManager.h"
+
+1627842288 c:\_mcho\_c++\budgetmanagment\expensemanager.h
+	<iostream>
+	<vector>
+	"Expense.h"
+	"ExpensesFile.h"
+	"Operation.h"
+	"SupportingMethods.h"
 

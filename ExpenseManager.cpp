@@ -40,9 +40,6 @@ Expense ExpenseManager::giveNewExpenseData() {
 
 
 int ExpenseManager::getNewExpenseId() {
-    if (expenses.empty() == true)
-        return 1;
-    else {
-        return expenses.back().getId()+1;
-    }
+      int numberOfExpenses = expensesFile.getNumberOfExpensesInFile();
+  return numberOfExpenses + 1;
 }

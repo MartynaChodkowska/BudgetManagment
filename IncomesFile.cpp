@@ -11,7 +11,7 @@ void IncomesFile::addIncomeToFile(Income income) {
     xmlFile.IntoElem();
     xmlFile.AddElem("INCOME");
     xmlFile.IntoElem();
-    xmlFile.AddElem("INCOMEID", to_string(income.getId()));
+    xmlFile.AddElem("ID", to_string(income.getId()));
     xmlFile.AddElem("USERID", to_string(income.getUserId()));
     xmlFile.AddElem("DATE", income.getDate());
     xmlFile.AddElem("AMOUNT", to_string(income.getAmount()));
@@ -35,31 +35,49 @@ vector<Income> IncomesFile::loadIncomesFromFile(int loggedInUserId) {
         while(xmlFile.FindElem("INCOME")) {
             xmlFile.IntoElem();
 
-            xmlFile.FindElem("INCOMEID");
-            int incomeId = atoi(MCD_2PCSZ(xmlFile.GetData()));
-
             xmlFile.FindElem("USERID");
             int userId = atoi(MCD_2PCSZ(xmlFile.GetData()));
+            if (userId == loggedInUserId) {
 
-            xmlFile.FindElem("DATE");
-            string incomeDate = xmlFile.GetData();
+                xmlFile.FindElem("ID");
+                int id = atoi(MCD_2PCSZ(xmlFile.GetData()));
 
-            xmlFile.FindElem("AMOUNT");
-            double incomeAmount = atof(MCD_2PCSZ(xmlFile.GetData()));
+                xmlFile.FindElem("DATE");
+                string date = xmlFile.GetData();
 
-            xmlFile.FindElem("GROUP");
-            string incomeGroup = xmlFile.GetData();
+                xmlFile.FindElem("AMOUNT");
+                double amount = atof(MCD_2PCSZ(xmlFile.GetData()));
 
-            income.setId(incomeId);
-            income.setUserId(userId);
-            income.setDate(incomeDate);
-            income.setAmount(incomeAmount);
-            income.setGroup(incomeGroup);
+                xmlFile.FindElem("GROUP");
+                string group = xmlFile.GetData();
 
-            incomesVector.push_back(income);
+                income.setId(id);
+                income.setUserId(userId);
+                income.setDate(date);
+                income.setAmount(amount);
+                income.setGroup(group);
 
+                incomesVector.push_back(income);
+            }
             xmlFile.OutOfElem();
         }
     }
     return incomesVector;
+}
+
+
+int IncomesFile::getNumberOfIncomesInFile() {
+    CMarkup xmlFile;
+    xmlFile.Load(getFilename());
+    xmlFile.ResetMainPos();
+    int numberOfIncomes = 0;
+
+    if (xmlFile.FindElem("INCOMES")) {
+        xmlFile.IntoElem();
+        while(xmlFile.FindElem("INCOME")) {
+            numberOfIncomes++;
+        }
+    }
+
+    return numberOfIncomes;
 }

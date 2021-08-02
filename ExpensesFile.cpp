@@ -36,30 +36,47 @@ vector<Expense> ExpensesFile::loadExpensesFromFile(int loggedInUserId) {
             xmlFile.IntoElem();
 
             xmlFile.FindElem("EXPENSEID");
-            int expenseId = atoi(MCD_2PCSZ(xmlFile.GetData()));
+            int id = atoi(MCD_2PCSZ(xmlFile.GetData()));
 
             xmlFile.FindElem("USERID");
             int userId = atoi(MCD_2PCSZ(xmlFile.GetData()));
+            if (userId == loggedInUserId) {
+                xmlFile.FindElem("DATE");
+                string date = xmlFile.GetData();
 
-            xmlFile.FindElem("DATE");
-            string expenseDate = xmlFile.GetData();
+                xmlFile.FindElem("AMOUNT");
+                double amount = atof(MCD_2PCSZ(xmlFile.GetData()));
 
-            xmlFile.FindElem("AMOUNT");
-            double expenseAmount = atof(MCD_2PCSZ(xmlFile.GetData()));
+                xmlFile.FindElem("GROUP");
+                string group = xmlFile.GetData();
 
-            xmlFile.FindElem("GROUP");
-            string expenseGroup = xmlFile.GetData();
+                expense.setId(id);
+                expense.setUserId(userId);
+                expense.setDate(date);
+                expense.setAmount(amount);
+                expense.setGroup(group);
 
-            expense.setId(expenseId);
-            expense.setUserId(userId);
-            expense.setDate(expenseDate);
-            expense.setAmount(expenseAmount);
-            expense.setGroup(expenseGroup);
+                expensesVector.push_back(expense);
 
-            expensesVector.push_back(expense);
-
-            xmlFile.OutOfElem();
+                xmlFile.OutOfElem();
+            }
         }
     }
     return expensesVector;
+}
+
+int ExpensesFile::getNumberOfExpensesInFile() {
+    CMarkup xmlFile;
+    xmlFile.Load(getFilename());
+    xmlFile.ResetMainPos();
+    int numberOfExpenses = 0;
+
+    if (xmlFile.FindElem("EXPENSES")) {
+        xmlFile.IntoElem();
+        while(xmlFile.FindElem("EXPENSE")) {
+            numberOfExpenses++;
+        }
+    }
+
+    return numberOfExpenses;
 }
