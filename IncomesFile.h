@@ -9,6 +9,7 @@
 #include "Markup.h"
 #include "XMLFile.h"
 #include "Income.h"
+#include "SupportingMethods.h"
 
 
 using namespace std;

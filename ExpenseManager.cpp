@@ -17,23 +17,23 @@ void ExpenseManager::addExpense() {
 Expense ExpenseManager::giveNewExpenseData() {
     Expense expense;
 
-    string expenseDate;
+    string date;
     cout << "please enter expense date [yyyy-mm-dd]/[if today select 'T']: ";
-    expenseDate = SupportingMethods::loadLine();
+    date = SupportingMethods::loadLine();
 
-    double expenseAmount;
+    double amount;
     cout << "enter expense amount [0.0]: ";
-    expenseAmount = SupportingMethods::loadDouble();
+    amount = SupportingMethods::loadDouble();
 
-    string expenseGroup;
+    string group;
     cout << "enter expense group: ";
-    expenseGroup = SupportingMethods::loadLine();
+    group = SupportingMethods::loadLine();
 
     expense.setId(getNewExpenseId());
     expense.setUserId(LOGGDED_IN_USER_ID);
-    expense.setDate(expenseDate);
-    expense.setAmount(expenseAmount);
-    expense.setGroup(expenseGroup);
+    expense.setDate(SupportingMethods::dateToInt(date));
+    expense.setAmount(amount);
+    expense.setGroup(group);
 
     return expense;
 }

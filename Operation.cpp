@@ -6,7 +6,7 @@ int Operation::getId() {
 int Operation::getUserId() {
     return userId;
 }
-string Operation::getDate() {
+int Operation::getDate() {
     return date;
 }
 double Operation::getAmount() {
@@ -19,7 +19,7 @@ void Operation::setId(int newId) {
 void Operation::setUserId(int newUserId) {
     userId = newUserId;
 }
-void Operation::setDate(string newDate) {
+void Operation::setDate(int newDate) {
     date = newDate;
 }
 void Operation::setAmount(double newAmount) {

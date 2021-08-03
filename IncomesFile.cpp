@@ -13,7 +13,8 @@ void IncomesFile::addIncomeToFile(Income income) {
     xmlFile.IntoElem();
     xmlFile.AddElem("ID", to_string(income.getId()));
     xmlFile.AddElem("USERID", to_string(income.getUserId()));
-    xmlFile.AddElem("DATE", income.getDate());
+    string tempDate = SupportingMethods::dateToString(income.getDate());
+    xmlFile.AddElem("DATE", SupportingMethods::dateToString(income.getDate()));
     xmlFile.AddElem("AMOUNT", to_string(income.getAmount()));
     xmlFile.AddElem("GROUP", income.getGroup());
     xmlFile.OutOfElem();
@@ -53,7 +54,7 @@ vector<Income> IncomesFile::loadIncomesFromFile(int loggedInUserId) {
 
                 income.setId(id);
                 income.setUserId(userId);
-                income.setDate(date);
+                income.setDate(SupportingMethods::dateToInt(date));
                 income.setAmount(amount);
                 income.setGroup(group);
 
@@ -62,6 +63,7 @@ vector<Income> IncomesFile::loadIncomesFromFile(int loggedInUserId) {
             xmlFile.OutOfElem();
         }
     }
+    else cout << "incomes list is empty" ;
     return incomesVector;
 }
 

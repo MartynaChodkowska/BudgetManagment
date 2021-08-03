@@ -17,23 +17,23 @@ void IncomeManager::addIncome() {
 Income IncomeManager::giveNewIncomeData() {
     Income income;
 
-    string incomeDate;
+    string date;
     cout << "please enter income date [yyyy-mm-dd]/[if today select 'T']: ";
-    incomeDate = SupportingMethods::loadLine();
+    date = SupportingMethods::loadLine();
 
-    double incomeAmount;
+    double amount;
     cout << "enter income amount [0.0]: ";
-    incomeAmount = SupportingMethods::loadDouble();
+    amount = SupportingMethods::loadDouble();
 
-    string incomeGroup;
+    string group;
     cout << "enter income group: ";
-    incomeGroup = SupportingMethods::loadLine();
+    group = SupportingMethods::loadLine();
 
     income.setId(getNewIncomeId());
     income.setUserId(LOGGDED_IN_USER_ID);
-    income.setDate(incomeDate);
-    income.setAmount(incomeAmount);
-    income.setGroup(incomeGroup);
+    income.setDate(SupportingMethods::dateToInt(date));
+    income.setAmount(amount);
+    income.setGroup(group);
 
     return income;
 }
