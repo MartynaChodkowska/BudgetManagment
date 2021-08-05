@@ -16,11 +16,18 @@ void IncomeManager::addIncome() {
 
 Income IncomeManager::giveNewIncomeData() {
     Income income;
+    char selection;
 
     string date = "";
     do{
-            cout << "please enter expense date [yyyy-mm-dd]/[if today select 'T']: ";
-    date = SupportingMethods::loadLine();
+        selection = SupportingMethods::selectOptionFromDateMenu();
+        if (selection == '1') {
+            date = DateManager::getCurrentDate();
+            cout << "operation date: " << date << endl;
+        } else if (selection == '2') {
+            cout << "please enter operation date [yyyy-mm-dd]:";
+            date = SupportingMethods::loadLine();
+        }
     }
     while(!DateManager::isDateCorrect(date));
 

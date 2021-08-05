@@ -3,6 +3,5 @@ obj/
 plan/
 BudgetManagment.*
 Users.xml
-Incomes.xml
 Expenses.xml
-DateManager.*
+Incomes.xml

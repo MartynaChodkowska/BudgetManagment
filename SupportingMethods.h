@@ -17,6 +17,7 @@ public:
     static double loadDouble();
     static char selectOptionFromMainMenu();
     static char selectOptionFromUserMenu();
+    static char selectOptionFromDateMenu();
     static int conversionFromStringToInt(string number);
     static string conversionFromIntToString(int number);
    /* static string dateToString(int date);

@@ -106,3 +106,13 @@ char SupportingMethods::selectOptionFromUserMenu() {
     return selection;
 }
 
+char SupportingMethods::selectOptionFromDateMenu(){
+       char selection;
+
+     cout << "please enter operation date - select option:" << endl;
+     cout << "1. Current date" << endl;
+     cout << "2. Custom date" << endl;
+     selection = loadCharacter();
+
+     return selection;
+}
