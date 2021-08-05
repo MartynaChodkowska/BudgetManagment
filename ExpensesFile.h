@@ -10,6 +10,7 @@
 #include "XMLFile.h"
 #include "Expense.h"
 #include "SupportingMethods.h"
+#include "DateManager.h"
 
 
 using namespace std;

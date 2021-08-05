@@ -19,9 +19,9 @@ public:
     static char selectOptionFromUserMenu();
     static int conversionFromStringToInt(string number);
     static string conversionFromIntToString(int number);
-    static string dateToString(int date);
+   /* static string dateToString(int date);
     static int dateToInt(string date);
-
+*/
     static double calculateDifferenceBetweenIncomesAndExpenses();
 };
 

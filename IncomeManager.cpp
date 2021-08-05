@@ -17,9 +17,13 @@ void IncomeManager::addIncome() {
 Income IncomeManager::giveNewIncomeData() {
     Income income;
 
-    string date;
-    cout << "please enter income date [yyyy-mm-dd]/[if today select 'T']: ";
+    string date = "";
+    do{
+            cout << "please enter expense date [yyyy-mm-dd]/[if today select 'T']: ";
     date = SupportingMethods::loadLine();
+    }
+    while(!DateManager::isDateCorrect(date));
+
 
     double amount;
     cout << "enter income amount [0.0]: ";
@@ -31,7 +35,7 @@ Income IncomeManager::giveNewIncomeData() {
 
     income.setId(getNewIncomeId());
     income.setUserId(LOGGDED_IN_USER_ID);
-    income.setDate(SupportingMethods::dateToInt(date));
+    income.setDate(DateManager::converseDateToInt(date));
     income.setAmount(amount);
     income.setGroup(group);
 
@@ -40,6 +44,6 @@ Income IncomeManager::giveNewIncomeData() {
 
 
 int IncomeManager::getNewIncomeId() {
-  int numberOfIncomes = incomesFile.getNumberOfIncomesInFile();
-  return numberOfIncomes + 1;
+    int numberOfIncomes = incomesFile.getNumberOfIncomesInFile();
+    return numberOfIncomes + 1;
 }

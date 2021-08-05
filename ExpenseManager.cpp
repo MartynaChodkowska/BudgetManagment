@@ -18,8 +18,11 @@ Expense ExpenseManager::giveNewExpenseData() {
     Expense expense;
 
     string date;
-    cout << "please enter expense date [yyyy-mm-dd]/[if today select 'T']: ";
+    do{
+            cout << "please enter expense date [yyyy-mm-dd]/[if today select 'T']: ";
     date = SupportingMethods::loadLine();
+    }
+    while(!DateManager::isDateCorrect(date));
 
     double amount;
     cout << "enter expense amount [0.0]: ";
@@ -31,7 +34,7 @@ Expense ExpenseManager::giveNewExpenseData() {
 
     expense.setId(getNewExpenseId());
     expense.setUserId(LOGGDED_IN_USER_ID);
-    expense.setDate(SupportingMethods::dateToInt(date));
+    expense.setDate(DateManager::converseDateToInt(date));
     expense.setAmount(amount);
     expense.setGroup(group);
 
