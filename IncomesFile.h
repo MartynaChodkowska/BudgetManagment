@@ -5,6 +5,7 @@
 #include <stdlib.h> //atof
 #include <fstream>
 #include <vector>
+#include <iomanip> //setprecision
 
 #include "Markup.h"
 #include "XMLFile.h"
