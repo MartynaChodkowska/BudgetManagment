@@ -33,7 +33,7 @@ Income IncomeManager::giveNewIncomeData() {
 
 
     double amount;
-    cout << "enter income amount [0.0]: ";
+    cout << "enter income amount [0.00]: ";
     amount = SupportingMethods::loadDouble();
 
     string group;
@@ -48,7 +48,6 @@ Income IncomeManager::giveNewIncomeData() {
 
     return income;
 }
-
 
 int IncomeManager::getNewIncomeId() {
     int numberOfIncomes = incomesFile.getNumberOfIncomesInFile();

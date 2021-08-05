@@ -33,7 +33,7 @@ Expense ExpenseManager::giveNewExpenseData() {
     } while(!DateManager::isDateCorrect(date));
 
     double amount;
-    cout << "enter expense amount [0.0]: ";
+    cout << "enter expense amount [0.00]: ";
     amount = SupportingMethods::loadDouble();
 
     string group;

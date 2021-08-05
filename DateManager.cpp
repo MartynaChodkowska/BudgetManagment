@@ -42,6 +42,7 @@ string DateManager::converseDateToString(int dateToConvert) {
     return dateString;
 }
 
+
 int DateManager::converseDateToInt(string dateToConvert) {
     int dateInt = 0;
 

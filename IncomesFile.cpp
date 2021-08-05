@@ -13,9 +13,8 @@ void IncomesFile::addIncomeToFile(Income income) {
     xmlFile.IntoElem();
     xmlFile.AddElem("ID", to_string(income.getId()));
     xmlFile.AddElem("USERID", to_string(income.getUserId()));
-   // string tempDate = SupportingMethods::dateToString(income.getDate());
     xmlFile.AddElem("DATE", DateManager::converseDateToString(income.getDate()));
-    xmlFile.AddElem("AMOUNT", to_string(income.getAmount()));
+    xmlFile.AddElem("AMOUNT", SupportingMethods::converseAmountToShortString(income.getAmount()));
     xmlFile.AddElem("GROUP", income.getGroup());
     xmlFile.OutOfElem();
 

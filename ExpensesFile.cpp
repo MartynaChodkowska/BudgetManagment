@@ -14,7 +14,7 @@ void ExpensesFile::addExpenseToFile(Expense expense) {
     xmlFile.AddElem("ID", to_string(expense.getId()));
     xmlFile.AddElem("USERID", to_string(expense.getUserId()));
     xmlFile.AddElem("DATE", DateManager::converseDateToString(expense.getDate()));
-    xmlFile.AddElem("AMOUNT", to_string(expense.getAmount()));
+    xmlFile.AddElem("AMOUNT", SupportingMethods::converseAmountToShortString(expense.getAmount()));
     xmlFile.AddElem("GROUP", expense.getGroup());
     xmlFile.OutOfElem();
 

@@ -106,13 +106,24 @@ char SupportingMethods::selectOptionFromUserMenu() {
     return selection;
 }
 
-char SupportingMethods::selectOptionFromDateMenu(){
-       char selection;
+char SupportingMethods::selectOptionFromDateMenu() {
+    char selection;
 
-     cout << "please enter operation date - select option:" << endl;
-     cout << "1. Current date" << endl;
-     cout << "2. Custom date" << endl;
-     selection = loadCharacter();
+    cout << "please enter operation date - select option:" << endl;
+    cout << "1. Current date" << endl;
+    cout << "2. Custom date" << endl;
+    selection = loadCharacter();
 
-     return selection;
+    return selection;
+}
+
+string SupportingMethods::converseAmountToShortString(double amount) {
+    string shortAmount = to_string(amount);
+  //  string point =".";
+    size_t found = shortAmount.find(".");
+
+    if (found != string::npos)
+        shortAmount = shortAmount.substr(0,found+3);
+
+    return shortAmount;
 }
