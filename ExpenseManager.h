@@ -8,6 +8,7 @@
 #include "ExpensesFile.h"
 #include "Operation.h"
 #include "SupportingMethods.h"
+#include "DateManager.h"
 
 using namespace std;
 

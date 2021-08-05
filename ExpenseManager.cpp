@@ -16,10 +16,21 @@ void ExpenseManager::addExpense() {
 
 Expense ExpenseManager::giveNewExpenseData() {
     Expense expense;
+    char selection;
 
-    string date;
-    cout << "please enter expense date [yyyy-mm-dd]/[if today select 'T']: ";
-    date = SupportingMethods::loadLine();
+    string date = "";
+    do {
+
+        selection = SupportingMethods::selectOptionFromDateMenu();
+        if (selection == '1') {
+            date = DateManager::getCurrentDate();
+            cout << "operation date: " << date << endl;
+        } else if (selection == '2') {
+            cout << "please enter operation date [yyyy-mm-dd]:";
+            date = SupportingMethods::loadLine();
+        }
+
+    } while(!DateManager::isDateCorrect(date));
 
     double amount;
     cout << "enter expense amount [0.0]: ";
@@ -31,7 +42,7 @@ Expense ExpenseManager::giveNewExpenseData() {
 
     expense.setId(getNewExpenseId());
     expense.setUserId(LOGGDED_IN_USER_ID);
-    expense.setDate(SupportingMethods::dateToInt(date));
+    expense.setDate(DateManager::converseDateToInt(date));
     expense.setAmount(amount);
     expense.setGroup(group);
 
@@ -40,6 +51,6 @@ Expense ExpenseManager::giveNewExpenseData() {
 
 
 int ExpenseManager::getNewExpenseId() {
-      int numberOfExpenses = expensesFile.getNumberOfExpensesInFile();
-  return numberOfExpenses + 1;
+    int numberOfExpenses = expensesFile.getNumberOfExpensesInFile();
+    return numberOfExpenses + 1;
 }

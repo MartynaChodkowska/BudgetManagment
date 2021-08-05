@@ -106,34 +106,13 @@ char SupportingMethods::selectOptionFromUserMenu() {
     return selection;
 }
 
-string SupportingMethods::dateToString(int dateToConvert) {
-    string day = "", month = "", year = "", dateString = "";
-    int temp = 0;
+char SupportingMethods::selectOptionFromDateMenu(){
+       char selection;
 
-    temp = dateToConvert%100;
-    dateToConvert = dateToConvert/100;
-    day = to_string(temp);
-    if (day.size() ==1 )
-        day = "0" + day;
+     cout << "please enter operation date - select option:" << endl;
+     cout << "1. Current date" << endl;
+     cout << "2. Custom date" << endl;
+     selection = loadCharacter();
 
-    temp = dateToConvert%100;
-    dateToConvert = dateToConvert/100;
-    month = to_string(temp);
-    if (month.size() ==1 )
-        month = "0" + month;
-
-    year = to_string(dateToConvert);
-
-    dateString = year+"-"+month+"-"+day;
-    return dateString;
-}
-
-int SupportingMethods::dateToInt(string dateToConvert) {
-    int dateInt = 0;
-
-    dateToConvert = dateToConvert.erase(4,1);
-    dateToConvert = dateToConvert.erase(6,1);
-    dateInt = conversionFromStringToInt(dateToConvert);
-
-    return dateInt;
+     return selection;
 }
