@@ -119,11 +119,21 @@ char SupportingMethods::selectOptionFromDateMenu() {
 
 string SupportingMethods::converseAmountToShortString(double amount) {
     string shortAmount = to_string(amount);
-  //  string point =".";
     size_t found = shortAmount.find(".");
 
     if (found != string::npos)
         shortAmount = shortAmount.substr(0,found+3);
 
     return shortAmount;
+}
+
+int SupportingMethods::countNumbers(int number) {
+    int amountOfNumbers = 0, temp = 0;
+    do {
+        temp = number%10;
+        number -=temp;
+        number= number/10;
+        amountOfNumbers ++;
+    } while (number !=0);
+    return amountOfNumbers;
 }

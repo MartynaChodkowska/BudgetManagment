@@ -9,16 +9,22 @@ void BudgetManagment::logInUser() {
     if(userManager.isUserLoggedIn()) {
         incomeManager = new IncomeManager(INCOMES_FILENAME, userManager.getLoggedInUserId());
         expenseManager = new ExpenseManager (EXPENSES_FILENAME, userManager.getLoggedInUserId());
+        balanceManager = new BalanceManager();
     }
 }
-
 
 void BudgetManagment::addIncome() {
     incomeManager->addIncome();
 }
 
-void BudgetManagment::addExpense(){
+void BudgetManagment::addExpense() {
     expenseManager->addExpense();
+}
+
+void BudgetManagment::currentMonthBalanceSheet() {
+    incomeManager->displayIncomesFromCurrentMonth();
+    expenseManager->displayExpensesFromCurrentMonth();
+
 }
 
 void BudgetManagment::loggedInUserPasswordChange() {
@@ -31,6 +37,8 @@ void BudgetManagment::logOutUser() {
     incomeManager = NULL;
     delete expenseManager;
     expenseManager = NULL;
+    delete balanceManager;
+    balanceManager = NULL;
 }
 
 bool BudgetManagment::isUserLoggedIn() {
@@ -46,8 +54,4 @@ char BudgetManagment::selectOptionFromMainMenu() {
 
 char BudgetManagment::selectOptionFromUserMenu() {
     return SupportingMethods::selectOptionFromUserMenu();
-}
-
-void BudgetManagment::displayAllUsers() {
-    userManager.displayAllUsers();
 }

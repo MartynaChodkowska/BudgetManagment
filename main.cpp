@@ -36,10 +36,10 @@ int main() {
             case '2':
                 budget.addExpense();
                 break;
-           /* case '3':
+            case '3':
                 budget.currentMonthBalanceSheet();
                 break;
-            case '4':
+           /* case '4':
                 budget.previousMonthBalanceSheet();
                 break;
             case '5':

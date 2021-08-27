@@ -148,19 +148,8 @@ int DateManager::getNumberOfDaysInMonth(int month, int year) {
 
 bool DateManager::isYearIntercalary(int year) {
     if (((year%4 == 0) && (year%100 != 0)) || year%400 == 0) {
-        /* cout << "year: " << year << endl;
-         cout << "year%4: " << year%4 << endl;
-         cout << "year%100: " << year%100 << endl;
-         cout << "year%400: " << year%400 << endl;
-         cout << "Returning true" << endl;*/
         return true;
     } else {
-        /*       cout << "year: " << year << endl;
-          cout << "year%4: " << year%4 << endl;
-          cout << "year%100: " << year%100 << endl;
-          cout << "year%400: " << year%400 << endl;
-          cout << "Returning false" << endl;
-        */
         return false;
     }
 }

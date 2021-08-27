@@ -3,14 +3,18 @@
 
 #include <iostream>
 #include <sstream>
+#include <iomanip>
 
 #include "Markup.h"
 
 using namespace std;
 
 class SupportingMethods {
-
+  // double totalIncomes;
+  //  double totalExpenses;
 public:
+    SupportingMethods() {
+    }
     static char loadCharacter();
     static string loadLine();
     static int loadInteger();
@@ -21,8 +25,8 @@ public:
     static int conversionFromStringToInt(string number);
     static string conversionFromIntToString(int number);
     static string converseAmountToShortString(double amount);
+    static int countNumbers(int number);
 
-    static double calculateDifferenceBetweenIncomesAndExpenses();
 };
 
 

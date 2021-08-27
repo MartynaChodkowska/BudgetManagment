@@ -43,17 +43,20 @@ vector<Income> IncomesFile::loadIncomesFromFile(int loggedInUserId) {
                 int id = atoi(MCD_2PCSZ(xmlFile.GetData()));
 
                 xmlFile.FindElem("DATE");
-                string date = xmlFile.GetData();
+                string dateFromFile = xmlFile.GetData();
+                int date = DateManager::converseDateToInt(dateFromFile);
+
 
                 xmlFile.FindElem("AMOUNT");
-                double amount = atof(MCD_2PCSZ(xmlFile.GetData()));
+                string amountFromFile = xmlFile.GetData();
+                double amount = stod(amountFromFile);
 
                 xmlFile.FindElem("GROUP");
                 string group = xmlFile.GetData();
 
                 income.setId(id);
                 income.setUserId(userId);
-                income.setDate(DateManager::converseDateToInt(date));
+                income.setDate(date);
                 income.setAmount(amount);
                 income.setGroup(group);
 
@@ -62,7 +65,6 @@ vector<Income> IncomesFile::loadIncomesFromFile(int loggedInUserId) {
             xmlFile.OutOfElem();
         }
     }
-    else cout << "incomes list is empty" ;
     return incomesVector;
 }
 

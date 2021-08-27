@@ -10,7 +10,9 @@ class Operation {
     double amount;
 
 public:
-    //Operation();
+    bool operator< (const Operation &other) const{
+    return date < other.date;
+    }
     int getId();
     int getUserId(); //is it necessary?
     int getDate();

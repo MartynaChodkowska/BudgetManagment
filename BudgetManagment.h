@@ -7,6 +7,7 @@
 #include "IncomeManager.h"
 #include "ExpenseManager.h"
 
+
 using namespace std;
 
 class BudgetManagment {
@@ -33,15 +34,14 @@ public:
     void logInUser();
     void addIncome();
     void addExpense();
-//   void currentMonthBalanceSheet();
-//   void previousMonthBalanceSheet();
+    void currentMonthBalanceSheet();
+    void previousMonthBalanceSheet();
 //   void selectedPeriodBalanceSheet();
     void loggedInUserPasswordChange();
     void logOutUser();
     bool isUserLoggedIn();
     char selectOptionFromMainMenu();
     char selectOptionFromUserMenu();
-    void displayAllUsers();
 };
 
 

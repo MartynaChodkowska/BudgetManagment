@@ -34,18 +34,19 @@ vector<Expense> ExpensesFile::loadExpensesFromFile(int loggedInUserId) {
         xmlFile.IntoElem();
         while(xmlFile.FindElem("EXPENSE")) {
             xmlFile.IntoElem();
-
-            xmlFile.FindElem("EXPENSEID");
+            xmlFile.FindElem("ID");
             int id = atoi(MCD_2PCSZ(xmlFile.GetData()));
 
             xmlFile.FindElem("USERID");
             int userId = atoi(MCD_2PCSZ(xmlFile.GetData()));
             if (userId == loggedInUserId) {
                 xmlFile.FindElem("DATE");
-                int date = atoi(MCD_2PCSZ(xmlFile.GetData()));
+                string dateFromFile = xmlFile.GetData();
+                int date = DateManager::converseDateToInt(dateFromFile);
 
                 xmlFile.FindElem("AMOUNT");
-                double amount = atof(MCD_2PCSZ(xmlFile.GetData()));
+                string amountFromFile = xmlFile.GetData();
+                double amount = stod(amountFromFile.substr());
 
                 xmlFile.FindElem("GROUP");
                 string group = xmlFile.GetData();
@@ -57,9 +58,8 @@ vector<Expense> ExpensesFile::loadExpensesFromFile(int loggedInUserId) {
                 expense.setGroup(group);
 
                 expensesVector.push_back(expense);
-
-                xmlFile.OutOfElem();
             }
+            xmlFile.OutOfElem();
         }
     }
     return expensesVector;
@@ -77,6 +77,5 @@ int ExpensesFile::getNumberOfExpensesInFile() {
             numberOfExpenses++;
         }
     }
-
     return numberOfExpenses;
 }

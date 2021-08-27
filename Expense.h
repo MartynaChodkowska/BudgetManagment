@@ -10,7 +10,7 @@ using namespace std;
 class Expense :public Operation{
     string group;
 public:
-   // Expense() : Operation(){};
+
     string getGroup();
     void setGroup(string newGroup);
 };

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1628153210 source:c:\_mcho\_c++\budgetmanagment\main.cpp
+1628233479 source:c:\_mcho\_c++\budgetmanagment\main.cpp
 	<iostream>
 	"BudgetManagment.h"
 
@@ -23,10 +23,10 @@
 1627555570 c:\_mcho\_c++\budgetmanagment\user.h
 	<iostream>
 
-1628014018 source:c:\_mcho\_c++\budgetmanagment\operation.cpp
+1628321750 source:c:\_mcho\_c++\budgetmanagment\operation.cpp
 	"Operation.h"
 
-1628014018 c:\_mcho\_c++\budgetmanagment\operation.h
+1628321846 c:\_mcho\_c++\budgetmanagment\operation.h
 	<iostream>
 
 1627555570 source:c:\_mcho\_c++\budgetmanagment\date.cpp
@@ -35,19 +35,21 @@
 1627566265 c:\_mcho\_c++\budgetmanagment\date.h
 	<iostream>
 
-1627892552 source:c:\_mcho\_c++\budgetmanagment\budgetmanagment.cpp
+1629735990 source:c:\_mcho\_c++\budgetmanagment\budgetmanagment.cpp
 	"BudgetManagment.h"
 
-1627841526 source:c:\_mcho\_c++\budgetmanagment\usermanager.cpp
+1628247598 source:c:\_mcho\_c++\budgetmanagment\usermanager.cpp
 	"UserManager.h"
 
-1627841526 c:\_mcho\_c++\budgetmanagment\usermanager.h
+1629911408 c:\_mcho\_c++\budgetmanagment\usermanager.h
 	<iostream>
 	<vector>
 	"User.h"
 	"UsersFile.h"
+	"IncomeManager.h"
+	"DateManager.h"
 
-1627892552 c:\_mcho\_c++\budgetmanagment\budgetmanagment.h
+1629910517 c:\_mcho\_c++\budgetmanagment\budgetmanagment.h
 	<iostream>
 	"UserManager.h"
 	"IncomeManager.h"
@@ -73,12 +75,13 @@
 	"User.h"
 	"SupportingMethods.h"
 
-1628165083 source:c:\_mcho\_c++\budgetmanagment\supportingmethods.cpp
+1628863180 source:c:\_mcho\_c++\budgetmanagment\supportingmethods.cpp
 	"SupportingMethods.h"
 
-1628165052 c:\_mcho\_c++\budgetmanagment\supportingmethods.h
+1628863180 c:\_mcho\_c++\budgetmanagment\supportingmethods.h
 	<iostream>
 	<sstream>
+	<iomanip>
 	"Markup.h"
 
 1627647110 c:\_mcho\_c++\budgetmanagment\xmlfile.h
@@ -89,7 +92,7 @@
 1627647110 source:c:\_mcho\_c++\budgetmanagment\xmlfile.cpp
 	"XMLFile.h"
 
-1628164595 source:c:\_mcho\_c++\budgetmanagment\incomemanager.cpp
+1629911408 source:c:\_mcho\_c++\budgetmanagment\incomemanager.cpp
 	"IncomeManager.h"
 
 1627841526 source:c:\_mcho\_c++\budgetmanagment\income.cpp
@@ -99,16 +102,18 @@
 	<iostream>
 	"Operation.h"
 
-1628164340 c:\_mcho\_c++\budgetmanagment\incomemanager.h
+1629911451 c:\_mcho\_c++\budgetmanagment\incomemanager.h
 	<iostream>
 	<vector>
+	<algorithm>
+	<iomanip>
 	"Income.h"
 	"IncomesFile.h"
 	"Operation.h"
 	"SupportingMethods.h"
 	"DateManager.h"
 
-1628164595 c:\_mcho\_c++\budgetmanagment\incomesfile.h
+1628168216 c:\_mcho\_c++\budgetmanagment\incomesfile.h
 	<iostream>
 	<stdlib.h>
 	<fstream>
@@ -120,17 +125,17 @@
 	"SupportingMethods.h"
 	"DateManager.h"
 
-1628165200 source:c:\_mcho\_c++\budgetmanagment\incomesfile.cpp
+1628324073 source:c:\_mcho\_c++\budgetmanagment\incomesfile.cpp
 	"IncomesFile.h"
 
 1627892552 source:c:\_mcho\_c++\budgetmanagment\expense.cpp
 	"Expense.h"
 
-1627892552 c:\_mcho\_c++\budgetmanagment\expense.h
+1628233026 c:\_mcho\_c++\budgetmanagment\expense.h
 	<iostream>
 	"Operation.h"
 
-1628165052 source:c:\_mcho\_c++\budgetmanagment\expensesfile.cpp
+1628323026 source:c:\_mcho\_c++\budgetmanagment\expensesfile.cpp
 	"ExpensesFile.h"
 
 1628164340 c:\_mcho\_c++\budgetmanagment\expensesfile.h
@@ -144,24 +149,35 @@
 	"SupportingMethods.h"
 	"DateManager.h"
 
-1628165200 source:c:\_mcho\_c++\budgetmanagment\expensemanager.cpp
+1629735990 source:c:\_mcho\_c++\budgetmanagment\expensemanager.cpp
 	"ExpenseManager.h"
 
-1628164340 c:\_mcho\_c++\budgetmanagment\expensemanager.h
+1629911457 c:\_mcho\_c++\budgetmanagment\expensemanager.h
 	<iostream>
 	<vector>
+	<algorithm>
+	<iomanip>
 	"Expense.h"
 	"ExpensesFile.h"
 	"Operation.h"
 	"SupportingMethods.h"
 	"DateManager.h"
 
-1628165052 c:\_mcho\_c++\budgetmanagment\datemanager.h
+1628231923 c:\_mcho\_c++\budgetmanagment\datemanager.h
 	<iostream>
 	<time.h>
 	<ctime>
 	"SupportingMethods.h"
 
-1628165052 source:c:\_mcho\_c++\budgetmanagment\datemanager.cpp
+1628241030 source:c:\_mcho\_c++\budgetmanagment\datemanager.cpp
 	"DateManager.h"
+
+1629736488 c:\_mcho\_c++\budgetmanagment\balancemanager.h
+	<iostream>
+	"IncomeManager.h"
+	"ExpenseManager.h"
+	"DateManager.h"
+
+1628682309 source:c:\_mcho\_c++\budgetmanagment\balancemanager.cpp
+	"BalanceManager.h"
 

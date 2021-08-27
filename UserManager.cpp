@@ -122,9 +122,16 @@ int UserManager::getLoggedInUserId() {
     return loggedInUserId;
 }
 
-void UserManager::displayAllUsers() {
-    for (vector<User>::iterator itr = users.begin(); itr != users.end(); itr++) {
-        cout << itr->getId() << endl;
-        cout << itr->getLogin() << endl;
-    }
+
+
+
+
+void UserManager::displayIncomesFromSelectedMonth(int monthToDisplay, int yearToDisplay) {
+
+    totalIncomesAmount = incomeManager.displayIncomesFromSelectedMonth(monthToDisplay, yearToDisplay);
+}
+
+void UserManager::displayIncomesFromCurrentMonth() {
+    displayIncomesFromSelectedMonth(DateManager::getMonthFromCurrentDate(), DateManager::getYearFromCurrentDate());
+
 }

@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm> //sort
+#include <iomanip> // setprecision
 
 #include "Expense.h"
 #include "ExpensesFile.h"
@@ -16,21 +18,25 @@ class ExpenseManager {
     const int LOGGDED_IN_USER_ID;
     vector <Expense> expenses;
     ExpensesFile expensesFile;
+  //  double totalExpenses;
     Expense giveNewExpenseData();
-    void displayExpensesFromSelectedMonth(int month);
     int getNewExpenseId();
+    vector<Expense> findExpensesFromMonth(int month, int year);
+    vector<Expense> sortExpenses(vector<Expense> expensesToSort);
+    vector<Expense> getExpensesToDisplay(int month, int year);
+    double calculateTotalExpensesAmount(vector<Expense> expenses);
+    double calculateBalance (IncomeManager &incomes, ExpenseManager &expenses);
+    void displayExpensesFromSelectedMonth(int month, int year);
 
 public:
     ExpenseManager(string expensesFilename, int loggedInUserId)
         : expensesFile (expensesFilename), LOGGDED_IN_USER_ID (loggedInUserId) {
         expenses = expensesFile.loadExpensesFromFile(loggedInUserId);
     };
-
     void addExpense();
-    void displayexpensesFromCurrentMonth();
-    void displayexpensesFromPreviousMonth();
-    void displayexpensesFromSelectedPeriod(int startMonth, int endMonth);
-
+    void displayExpensesFromCurrentMonth();
+    void displayExpensesFromPreviousMonth();
+    void displayExpensesFromSelectedPeriod(int startMonth, int endMonth);
 };
 
 
