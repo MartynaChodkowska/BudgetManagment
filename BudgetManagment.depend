@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1631300685 source:c:\_mcho\_c++\budgetmanagment\main.cpp
+1631301933 source:c:\_mcho\_c++\budgetmanagment\main.cpp
 	<iostream>
 	"BudgetManagment.h"
 
@@ -35,19 +35,19 @@
 1627566265 c:\_mcho\_c++\budgetmanagment\date.h
 	<iostream>
 
-1631300908 source:c:\_mcho\_c++\budgetmanagment\budgetmanagment.cpp
+1631301933 source:c:\_mcho\_c++\budgetmanagment\budgetmanagment.cpp
 	"BudgetManagment.h"
 
 1631282367 source:c:\_mcho\_c++\budgetmanagment\usermanager.cpp
 	"UserManager.h"
 
-1631282367 c:\_mcho\_c++\budgetmanagment\usermanager.h
+1631302805 c:\_mcho\_c++\budgetmanagment\usermanager.h
 	<iostream>
 	<vector>
 	"User.h"
 	"UsersFile.h"
 
-1631301070 c:\_mcho\_c++\budgetmanagment\budgetmanagment.h
+1631301933 c:\_mcho\_c++\budgetmanagment\budgetmanagment.h
 	<iostream>
 	"UserManager.h"
 	"TransactionManager.h"
@@ -75,16 +75,19 @@
 1631282367 source:c:\_mcho\_c++\budgetmanagment\supportingmethods.cpp
 	"SupportingMethods.h"
 
-1631301008 c:\_mcho\_c++\budgetmanagment\supportingmethods.h
+1631302806 c:\_mcho\_c++\budgetmanagment\supportingmethods.h
 	<iostream>
 	<sstream>
 	<iomanip>
 	"Markup.h"
+	<time.h>
+	<ctime>
 
-1627647110 c:\_mcho\_c++\budgetmanagment\xmlfile.h
+1631302806 c:\_mcho\_c++\budgetmanagment\xmlfile.h
 	<iostream>
 	<fstream>
 	<vector>
+	"Markup.h"
 
 1627647110 source:c:\_mcho\_c++\budgetmanagment\xmlfile.cpp
 	"XMLFile.h"
@@ -160,7 +163,7 @@
 	"SupportingMethods.h"
 	"DateManager.h"
 
-1631282367 c:\_mcho\_c++\budgetmanagment\datemanager.h
+1631301736 c:\_mcho\_c++\budgetmanagment\datemanager.h
 	<iostream>
 	<time.h>
 	<ctime>
@@ -181,10 +184,10 @@
 1631282367 source:c:\_mcho\_c++\budgetmanagment\transaction.cpp
 	"Transaction.h"
 
-1631282367 c:\_mcho\_c++\budgetmanagment\transaction.h
+1631301933 c:\_mcho\_c++\budgetmanagment\transaction.h
 	<iostream>
 
-1631300734 c:\_mcho\_c++\budgetmanagment\transactionmanager.h
+1631301933 c:\_mcho\_c++\budgetmanagment\transactionmanager.h
 	<iostream>
 	<vector>
 	<algorithm>
@@ -194,12 +197,12 @@
 	"SupportingMethods.h"
 	"DateManager.h"
 
-1631300948 c:\_mcho\_c++\budgetmanagment\transactionsfile.h
+1631302805 c:\_mcho\_c++\budgetmanagment\transactionsfile.h
 	<iostream>
 	"Markup.h"
 	"XMLFile.h"
 	"Transaction.h"
-	"DateManager.h"
+	"SupportingMethods.h"
 
 1631282367 source:c:\_mcho\_c++\budgetmanagment\transactionsfile.cpp
 	"TransactionsFile.h"

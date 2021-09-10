@@ -23,13 +23,13 @@ Transaction TransactionManager::giveNewTransactionData() {
     do {
         selection = SupportingMethods::selectOptionFromDateMenu();
         if (selection == '1') {
-            date = DateManager::getCurrentDate();
+            date = SupportingMethods::getCurrentDate();
             cout << "transaction date: " << date << endl;
         } else if (selection == '2') {
             cout << "please enter transaction date [yyyy-mm-dd]:";
             date = SupportingMethods::loadLine();
         }
-    } while(!DateManager::isDateCorrect(date));
+    } while(!SupportingMethods::isDateCorrect(date));
 
     double amount;
     cout << "enter transaction amount [0.00]: ";
@@ -42,7 +42,7 @@ Transaction TransactionManager::giveNewTransactionData() {
 
     transaction.setId(getNewTransactionId());
     transaction.setUserId(LOGGDED_IN_USER_ID);
-    transaction.setDate(DateManager::converseDateToInt(date));
+    transaction.setDate(SupportingMethods::converseDateToInt(date));
     transaction.setAmount(amount);
     transaction.setGroup(group);
 
@@ -60,8 +60,8 @@ vector<Transaction> TransactionManager::findTransactionsFromMonth(int month, int
     vector<Transaction> transactionsFromMonth;
 
     for(int i = 0; i < transactions.size(); i++) {
-        monthFromTransaction = DateManager::getMonthFromCustomDate(transactions[i].getDate());
-        yearFromTransaction = DateManager::getYearFromCustomDate(transactions[i].getDate());
+        monthFromTransaction = SupportingMethods::getMonthFromCustomDate(transactions[i].getDate());
+        yearFromTransaction = SupportingMethods::getYearFromCustomDate(transactions[i].getDate());
         if (monthFromTransaction == month && yearFromTransaction == year) {
             transactionsFromMonth.push_back(transactions[i]);
         }
@@ -88,7 +88,7 @@ void TransactionManager::displayIncomes(vector<Transaction> incomesToDisplay) {
     //cout << "related to month & year " << endl; // add supporting method which converse monthToDisplay&yearToDisplay to string
     if (!incomesToDisplay.empty()) {
         for(int i = 0; i < incomesToDisplay.size(); i++) {
-            cout << "date: " << DateManager::converseDateToString(incomesToDisplay[i].getDate()) << " ";
+            cout << "date: " << SupportingMethods::converseDateToString(incomesToDisplay[i].getDate()) << " ";
             cout << showpoint << setprecision (SupportingMethods::countNumbers(incomesToDisplay[i].getAmount())+2);
             cout << "amount: " << incomesToDisplay[i].getAmount() << "\t";
             cout << "group: " << incomesToDisplay[i].getGroup() << endl;
@@ -108,7 +108,7 @@ void TransactionManager::displayExpenses(vector<Transaction> expensessToDisplay)
     // cout << "related to month & year " << endl; // add supporting method which converse monthToDisplay&yearToDisplay to string
     if(!expensessToDisplay.empty()) {
         for(int i = 0; i < expensessToDisplay.size(); i++) {
-            cout << "date: " << DateManager::converseDateToString(expensessToDisplay[i].getDate()) << " ";
+            cout << "date: " << SupportingMethods::converseDateToString(expensessToDisplay[i].getDate()) << " ";
             cout << showpoint << setprecision (SupportingMethods::countNumbers(expensessToDisplay[i].getAmount())+2);
             cout << "amount: " << expensessToDisplay[i].getAmount() << "\t";
             cout << "group: " << expensessToDisplay[i].getGroup() << endl;
@@ -152,6 +152,6 @@ void TransactionManager::displayTransactionsFromSelectedMonth(int monthToDisplay
 }
 
 void TransactionManager::displayTransactionsFromCurrentMonth() {
-    displayTransactionsFromSelectedMonth(DateManager::getMonthFromCurrentDate(),DateManager::getYearFromCurrentDate());
+    displayTransactionsFromSelectedMonth(SupportingMethods::getMonthFromCurrentDate(),SupportingMethods::getYearFromCurrentDate());
 }
 

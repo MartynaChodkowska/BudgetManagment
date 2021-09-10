@@ -121,18 +121,3 @@ bool UserManager::isUserLoggedIn() {
 int UserManager::getLoggedInUserId() {
     return loggedInUserId;
 }
-
-
-
-/*
-
-void UserManager::displayIncomesFromSelectedMonth(int monthToDisplay, int yearToDisplay) {
-
-    totalIncomesAmount = incomeManager.displayIncomesFromSelectedMonth(monthToDisplay, yearToDisplay);
-}
-
-void UserManager::displayIncomesFromCurrentMonth() {
-    displayIncomesFromSelectedMonth(DateManager::getMonthFromCurrentDate(), DateManager::getYearFromCurrentDate());
-
-}
-*/

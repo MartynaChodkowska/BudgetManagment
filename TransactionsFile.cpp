@@ -13,7 +13,7 @@ void TransactionsFile::addTransactionToFile(Transaction transaction){
     xmlFile.IntoElem();
     xmlFile.AddElem("ID", to_string(transaction.getId()));
     xmlFile.AddElem("USERID", to_string(transaction.getUserId()));
-    xmlFile.AddElem("DATE", DateManager::converseDateToString(transaction.getDate()));
+    xmlFile.AddElem("DATE", SupportingMethods::converseDateToString(transaction.getDate()));
     xmlFile.AddElem("AMOUNT", SupportingMethods::converseAmountToShortString(transaction.getAmount()));
     xmlFile.AddElem("GROUP", transaction.getGroup());
     xmlFile.AddElem("TYPE", transaction.getType());
@@ -43,7 +43,7 @@ vector<Transaction> TransactionsFile::loadTransactionsFromFile(int loggedInUserI
             if (userId == loggedInUserId) {
                 xmlFile.FindElem("DATE");
                 string dateFromFile = xmlFile.GetData();
-                int date = DateManager::converseDateToInt(dateFromFile);
+                int date = SupportingMethods::converseDateToInt(dateFromFile);
 
                 xmlFile.FindElem("AMOUNT");
                 string amountFromFile = xmlFile.GetData();
