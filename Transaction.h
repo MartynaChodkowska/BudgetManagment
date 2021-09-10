@@ -1,28 +1,35 @@
-#ifndef OPERATION_H
-#define OPERATION_H
+#ifndef TRANSACTION_H
+#define TRANSACTION_H
 
 #include <iostream>
 
 using namespace std;
 
-class Operation {
+class Transaction{
     int id, userId, date;
     double amount;
+    string group, type;
 
 public:
-    bool operator< (const Operation &other) const{
+    //Transaction(int newId, int newUserId, int, double, string);
+    bool operator< (const Transaction &other) const{
     return date < other.date;
     }
     int getId();
     int getUserId(); //is it necessary?
     int getDate();
     double getAmount();
+    string getGroup();
+    string getType();
 
     void setId(int newId);
     void setUserId(int newUserId); //is it necessary?
     void setDate(int newDate);
     void setAmount(double newAmount);
+    void setGroup(string newGroup);
+    void setType(string newType);
+
 };
 
 
-#endif // OPERATION_H
+#endif // TRANSACTION_H

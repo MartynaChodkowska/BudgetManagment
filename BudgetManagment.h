@@ -4,31 +4,24 @@
 #include <iostream>
 
 #include "UserManager.h"
-#include "IncomeManager.h"
-#include "ExpenseManager.h"
-
+#include "TransactionManager.h"
 
 using namespace std;
 
 class BudgetManagment {
 
     UserManager userManager;
-    IncomeManager *incomeManager;
-    ExpenseManager *expenseManager;
-    const string INCOMES_FILENAME;
-    const string EXPENSES_FILENAME;
+    TransactionManager *transactionManager;
+    const string TRANSACTIONS_FILENAME;
 
 public:
-    BudgetManagment(string usersFilename, string incomesFilename, string expensesFilename)
-        : userManager(usersFilename), INCOMES_FILENAME(incomesFilename), EXPENSES_FILENAME(expensesFilename) {
-        incomeManager = NULL;
-        expenseManager = NULL;
+    BudgetManagment(string usersFilename, string transactionsFilename)
+        : userManager(usersFilename), TRANSACTIONS_FILENAME(transactionsFilename){
+        transactionManager = NULL;
     };
     ~BudgetManagment() {
-        delete incomeManager;
-        incomeManager = NULL;
-        delete expenseManager;
-        expenseManager = NULL;
+        delete transactionManager;
+        transactionManager = NULL;
     };
     void registerUser();
     void logInUser();
