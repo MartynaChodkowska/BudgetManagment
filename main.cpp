@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    BudgetManagment budget("Users.xml", "Incomes.xml", "Expenses.xml");
+    BudgetManagment budget("Users.xml", "Transactions.xml");
 
     char selection;
 

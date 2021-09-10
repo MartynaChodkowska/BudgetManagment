@@ -7,24 +7,20 @@ void BudgetManagment::registerUser() {
 void BudgetManagment::logInUser() {
     userManager.logInUser();
     if(userManager.isUserLoggedIn()) {
-        incomeManager = new IncomeManager(INCOMES_FILENAME, userManager.getLoggedInUserId());
-        expenseManager = new ExpenseManager (EXPENSES_FILENAME, userManager.getLoggedInUserId());
-        balanceManager = new BalanceManager();
+        transactionManager = new TransactionManager (TRANSACTIONS_FILENAME, userManager.getLoggedInUserId());
     }
 }
 
 void BudgetManagment::addIncome() {
-    incomeManager->addIncome();
+    transactionManager->addTransaction("INCOME");
 }
 
 void BudgetManagment::addExpense() {
-    expenseManager->addExpense();
+    transactionManager->addTransaction("EXPENSE");
 }
 
 void BudgetManagment::currentMonthBalanceSheet() {
-    incomeManager->displayIncomesFromCurrentMonth();
-    expenseManager->displayExpensesFromCurrentMonth();
-
+    transactionManager->displayTransactionsFromCurrentMonth();
 }
 
 void BudgetManagment::loggedInUserPasswordChange() {
@@ -33,12 +29,8 @@ void BudgetManagment::loggedInUserPasswordChange() {
 
 void BudgetManagment::logOutUser() {
     userManager.logOutUser();
-    delete incomeManager;
-    incomeManager = NULL;
-    delete expenseManager;
-    expenseManager = NULL;
-    delete balanceManager;
-    balanceManager = NULL;
+    delete transactionManager;
+    transactionManager = NULL;
 }
 
 bool BudgetManagment::isUserLoggedIn() {

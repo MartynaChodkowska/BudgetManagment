@@ -10,8 +10,6 @@
 using namespace std;
 
 class SupportingMethods {
-  // double totalIncomes;
-  //  double totalExpenses;
 public:
     SupportingMethods() {
     }

@@ -124,7 +124,7 @@ int UserManager::getLoggedInUserId() {
 
 
 
-
+/*
 
 void UserManager::displayIncomesFromSelectedMonth(int monthToDisplay, int yearToDisplay) {
 
@@ -135,3 +135,4 @@ void UserManager::displayIncomesFromCurrentMonth() {
     displayIncomesFromSelectedMonth(DateManager::getMonthFromCurrentDate(), DateManager::getYearFromCurrentDate());
 
 }
+*/
