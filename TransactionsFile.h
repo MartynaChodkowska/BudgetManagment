@@ -6,7 +6,7 @@
 #include "Markup.h"
 #include "XMLFile.h"
 #include "Transaction.h"
-#include "DateManager.h"
+#include "SupportingMethods.h"
 
 using namespace std;
 

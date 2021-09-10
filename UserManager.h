@@ -6,8 +6,6 @@
 
 #include "User.h"
 #include "UsersFile.h"
-//#include "IncomeManager.h"
-//#include "DateManager.h"
 
 using namespace std;
 
@@ -15,8 +13,7 @@ class UserManager {
     int loggedInUserId;
     vector<User> users;
     UsersFile usersFile;
-   // IncomeManager incomeManager;
-   // double totalIncomesAmount;
+
     User giveNewUserData();
     int getNewUserId();
     bool isLoginExists(string login);
