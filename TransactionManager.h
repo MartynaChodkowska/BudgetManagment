@@ -9,7 +9,6 @@
 #include "Transaction.h"
 #include "TransactionsFile.h"
 #include "SupportingMethods.h"
-#include "DateManager.h"
 
 using namespace std;
 

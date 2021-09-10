@@ -5,15 +5,15 @@
 
 using namespace std;
 
-class Transaction{
+class Transaction {
     int id, userId, date;
     double amount;
     string group, type;
 
 public:
     //Transaction(int newId, int newUserId, int, double, string);
-    bool operator< (const Transaction &other) const{
-    return date < other.date;
+    bool operator< (const Transaction &other) const {
+        return date < other.date;
     }
     int getId();
     int getUserId(); //is it necessary?

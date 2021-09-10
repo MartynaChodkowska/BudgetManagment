@@ -17,8 +17,7 @@ class SupportingMethods {
     static int getNumberOfDaysInMonth(int month, int year);
     static bool isYearIntercalary(int year);
 public:
-    SupportingMethods() {
-    }
+   // SupportingMethods() {    }
     static string getCurrentDate();
     static int converseDateToInt(string operationDate);
     static string converseDateToString(int operationDate);
