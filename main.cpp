@@ -39,12 +39,12 @@ int main() {
             case '3':
                 budget.currentMonthBalanceSheet();
                 break;
-           /* case '4':
+            case '4':
                 budget.previousMonthBalanceSheet();
                 break;
             case '5':
                 budget.selectedPeriodBalanceSheet();
-                break;*/
+                break;
             case '6':
                 budget.loggedInUserPasswordChange();
                 break;

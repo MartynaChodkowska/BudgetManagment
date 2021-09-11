@@ -29,15 +29,12 @@ public:
     void addExpense();
     void currentMonthBalanceSheet();
     void previousMonthBalanceSheet();
-//   void selectedPeriodBalanceSheet();
+    void selectedPeriodBalanceSheet();
     void loggedInUserPasswordChange();
     void logOutUser();
     bool isUserLoggedIn();
     char selectOptionFromMainMenu();
     char selectOptionFromUserMenu();
 };
-
-
-
 
 #endif // BUDGETMANAGMENT_H

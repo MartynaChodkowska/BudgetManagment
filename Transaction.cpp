@@ -3,15 +3,19 @@
 int Transaction::getId() {
     return id;
 }
+
 int Transaction::getUserId() {
     return userId;
 }
+
 int Transaction::getDate() {
     return date;
 }
+
 double Transaction::getAmount() {
     return amount;
 }
+
 string Transaction::getGroup() {
     return group;
 }
@@ -23,9 +27,12 @@ string Transaction::getType() {
 void Transaction::setId(int newId) {
     id = newId;
 }
+
 void Transaction::setUserId(int newUserId) {
     userId = newUserId;
 }
+
+
 void Transaction::setDate(int newDate) {
     date = newDate;
 }
