@@ -23,6 +23,10 @@ void BudgetManagment::currentMonthBalanceSheet() {
     transactionManager->displayTransactionsFromCurrentMonth();
 }
 
+void BudgetManagment::previousMonthBalanceSheet(){
+    transactionManager->displayTransactionsFromPreviousMonth();
+}
+
 void BudgetManagment::loggedInUserPasswordChange() {
     userManager.loggedInUserPasswordChange();
 }

@@ -155,3 +155,6 @@ void TransactionManager::displayTransactionsFromCurrentMonth() {
     displayTransactionsFromSelectedMonth(SupportingMethods::getMonthFromCurrentDate(),SupportingMethods::getYearFromCurrentDate());
 }
 
+void TransactionManager::displayTransactionsFromPreviousMonth() {
+    displayTransactionsFromSelectedMonth(SupportingMethods::getMonthFromCurrentDate()-1,SupportingMethods::getYearFromCurrentDate());
+}

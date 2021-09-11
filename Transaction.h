@@ -16,14 +16,14 @@ public:
         return date < other.date;
     }
     int getId();
-    int getUserId(); //is it necessary?
+    int getUserId();
     int getDate();
     double getAmount();
     string getGroup();
     string getType();
 
     void setId(int newId);
-    void setUserId(int newUserId); //is it necessary?
+    void setUserId(int newUserId);
     void setDate(int newDate);
     void setAmount(double newAmount);
     void setGroup(string newGroup);
