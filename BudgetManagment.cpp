@@ -27,6 +27,10 @@ void BudgetManagment::previousMonthBalanceSheet(){
     transactionManager->displayTransactionsFromPreviousMonth();
 }
 
+void BudgetManagment::selectedPeriodBalanceSheet(){
+    transactionManager->displayTransactionsFromSelectedPeriod();
+}
+
 void BudgetManagment::loggedInUserPasswordChange() {
     userManager.loggedInUserPasswordChange();
 }

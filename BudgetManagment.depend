@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1631301933 source:c:\_mcho\_c++\budgetmanagment\main.cpp
+1631371196 source:c:\_mcho\_c++\budgetmanagment\main.cpp
 	<iostream>
 	"BudgetManagment.h"
 
@@ -35,7 +35,7 @@
 1627566265 c:\_mcho\_c++\budgetmanagment\date.h
 	<iostream>
 
-1631301933 source:c:\_mcho\_c++\budgetmanagment\budgetmanagment.cpp
+1631371196 source:c:\_mcho\_c++\budgetmanagment\budgetmanagment.cpp
 	"BudgetManagment.h"
 
 1631303063 source:c:\_mcho\_c++\budgetmanagment\usermanager.cpp
@@ -47,7 +47,7 @@
 	"User.h"
 	"UsersFile.h"
 
-1631301933 c:\_mcho\_c++\budgetmanagment\budgetmanagment.h
+1631371196 c:\_mcho\_c++\budgetmanagment\budgetmanagment.h
 	<iostream>
 	"UserManager.h"
 	"TransactionManager.h"
@@ -72,7 +72,7 @@
 	"User.h"
 	"SupportingMethods.h"
 
-1631303063 source:c:\_mcho\_c++\budgetmanagment\supportingmethods.cpp
+1631371196 source:c:\_mcho\_c++\budgetmanagment\supportingmethods.cpp
 	"SupportingMethods.h"
 
 1631304413 c:\_mcho\_c++\budgetmanagment\supportingmethods.h
@@ -181,13 +181,13 @@
 1628682309 source:c:\_mcho\_c++\budgetmanagment\balancemanager.cpp
 	"BalanceManager.h"
 
-1631301933 source:c:\_mcho\_c++\budgetmanagment\transaction.cpp
+1631370390 source:c:\_mcho\_c++\budgetmanagment\transaction.cpp
 	"Transaction.h"
 
 1631370390 c:\_mcho\_c++\budgetmanagment\transaction.h
 	<iostream>
 
-1631304413 c:\_mcho\_c++\budgetmanagment\transactionmanager.h
+1631373928 c:\_mcho\_c++\budgetmanagment\transactionmanager.h
 	<iostream>
 	<vector>
 	<algorithm>
@@ -206,6 +206,6 @@
 1631303063 source:c:\_mcho\_c++\budgetmanagment\transactionsfile.cpp
 	"TransactionsFile.h"
 
-1631303063 source:c:\_mcho\_c++\budgetmanagment\transactionmanager.cpp
+1631374371 source:c:\_mcho\_c++\budgetmanagment\transactionmanager.cpp
 	"TransactionManager.h"
 

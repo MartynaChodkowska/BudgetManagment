@@ -20,13 +20,13 @@ class TransactionManager {
 
     Transaction giveNewTransactionData();
     int getNewTransactionId();
-    vector<Transaction> findTransactionsFromMonth(int month, int year);
+    vector<Transaction> findTransactionsFromMonth(int month, int year, int numberOfMonths);
     vector<Transaction> sortTransactions(vector<Transaction> transactionsToSort);
-    vector<Transaction> getTransactionsToDisplay(int month, int year);
+    vector<Transaction> getTransactionsToDisplay(int month, int year, int numberOfMonths);
     void displayIncomes(vector<Transaction> incomesToDisplay);
     void displayExpenses(vector<Transaction> expensessToDisplay);
     void displayBalance();
-    void displayTransactionsFromSelectedMonth(int month, int year);
+    void displayTransactionsFromSelectedMonth(int month, int year, int numberOfMonths);
 
 public:
     TransactionManager(string transactionsFilename, int loggedInUserId)
@@ -36,7 +36,7 @@ public:
     void addTransaction(string transactionType);
     void displayTransactionsFromCurrentMonth();
     void displayTransactionsFromPreviousMonth();
-    void displayTransactionsFromSelectedPeriod(int startMonth, int endMonth);
+    void displayTransactionsFromSelectedPeriod();
 };
 
 

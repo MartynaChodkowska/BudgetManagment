@@ -42,9 +42,9 @@ int main() {
             case '4':
                 budget.previousMonthBalanceSheet();
                 break;
-           /* case '5':
+            case '5':
                 budget.selectedPeriodBalanceSheet();
-                break;*/
+                break;
             case '6':
                 budget.loggedInUserPasswordChange();
                 break;
