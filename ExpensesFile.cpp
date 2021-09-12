@@ -1,6 +1,6 @@
 #include "ExpensesFile.h"
 
-void ExpensesFile::addTransactionToFile(Transaction transaction){
+void ExpensesFile::addTransactionToFile(Transaction transaction) {
     CMarkup xmlFile;
     xmlFile.Load(getFilename());
 
@@ -11,11 +11,11 @@ void ExpensesFile::addTransactionToFile(Transaction transaction){
     xmlFile.IntoElem();
     xmlFile.AddElem("EXPENSE");
     xmlFile.IntoElem();
-    xmlFile.AddElem("ID", to_string(transaction.getId()));
+    xmlFile.AddElem("EXPENSEID", to_string(transaction.getId()));
     xmlFile.AddElem("USERID", to_string(transaction.getUserId()));
     xmlFile.AddElem("DATE", SupportingMethods::converseDateToString(transaction.getDate()));
+    xmlFile.AddElem("ITEM", transaction.getItem());
     xmlFile.AddElem("AMOUNT", SupportingMethods::converseAmountToShortString(transaction.getAmount()));
-    xmlFile.AddElem("GROUP", transaction.getGroup());
     xmlFile.OutOfElem();
 
     xmlFile.Save(getFilename());
@@ -43,18 +43,18 @@ vector<Transaction> ExpensesFile::loadTransactionsFromFile(int loggedInUserId) {
                 string dateFromFile = xmlFile.GetData();
                 int date = SupportingMethods::converseDateToInt(dateFromFile);
 
+                xmlFile.FindElem("ITEM");
+                string item = xmlFile.GetData();
+
                 xmlFile.FindElem("AMOUNT");
                 string amountFromFile = xmlFile.GetData();
                 double amount = stod(amountFromFile.substr());
 
-                xmlFile.FindElem("GROUP");
-                string group = xmlFile.GetData();
-
                 transaction.setId(id);
                 transaction.setUserId(userId);
                 transaction.setDate(date);
+                transaction.setItem(item);
                 transaction.setAmount(amount);
-                transaction.setGroup(group);
 
                 transactionsVector.push_back(transaction);
             }

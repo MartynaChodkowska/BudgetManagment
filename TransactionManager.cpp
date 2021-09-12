@@ -49,15 +49,15 @@ Transaction TransactionManager::giveNewTransactionData(string type) {
     amount = SupportingMethods::loadDouble();
     //sprawdzanie czy z kropka, jesli nie (przecinek) - zamiana na kropke
 
-    string group;
+    string item = "";
     cout << "enter transaction group: ";
-    group = SupportingMethods::loadLine();
+    item = SupportingMethods::loadLine();
 
     transaction.setId(getNewTransactionId(type));
     transaction.setUserId(LOGGDED_IN_USER_ID);
     transaction.setDate(SupportingMethods::converseDateToInt(date));
+    transaction.setItem(item);
     transaction.setAmount(amount);
-    transaction.setGroup(group);
 
     return transaction;
 }
@@ -126,7 +126,7 @@ void TransactionManager::displayIncomes(vector<Transaction> incomesToDisplay) {
             cout << "date: " << SupportingMethods::converseDateToString(incomesToDisplay[i].getDate()) << " ";
             cout << showpoint << setprecision (SupportingMethods::countNumbers(incomesToDisplay[i].getAmount())+2);
             cout << "amount: " << incomesToDisplay[i].getAmount() << "\t";
-            cout << "group: " << incomesToDisplay[i].getGroup() << endl;
+            cout << "group: " << incomesToDisplay[i].getItem() << endl;
             totalIncomes += incomesToDisplay[i].getAmount();
         }
     } else
@@ -145,7 +145,7 @@ void TransactionManager::displayExpenses(vector<Transaction> expensessToDisplay)
             cout << "date: " << SupportingMethods::converseDateToString(expensessToDisplay[i].getDate()) << " ";
             cout << showpoint << setprecision (SupportingMethods::countNumbers(expensessToDisplay[i].getAmount())+2);
             cout << "amount: " << expensessToDisplay[i].getAmount() << "\t";
-            cout << "group: " << expensessToDisplay[i].getGroup() << endl;
+            cout << "group: " << expensessToDisplay[i].getItem() << endl;
             totalExpenses += expensessToDisplay[i].getAmount();
         }
     } else
