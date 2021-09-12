@@ -1,21 +1,34 @@
 #include "TransactionManager.h"
 
-void TransactionManager::addTransaction(string transactionType) {
+void TransactionManager::addIncome() {
 
     system("cls");
-    cout << "\t>>>>  adding " << transactionType << " transaction  <<<<" << endl << endl;
-    Transaction transaction = giveNewTransactionData();
-    transaction.setType(transactionType);
+    cout << ">>>>  adding INCOME transaction  <<<<" << endl << endl;
+    Transaction income = giveNewTransactionData("income");
 
-    transactions.push_back(transaction);
-    transactionsFile.addTransactionToFile(transaction);
+    incomesFile.addTransactionToFile(income);
+    incomes.push_back(income);
 
-    cout << endl << "transaction had been saved" << endl << endl;
+    cout << endl << "income had been saved" << endl << endl;
     system("pause");
 
 }
 
-Transaction TransactionManager::giveNewTransactionData() {
+void TransactionManager::addExpense() {
+
+    system("cls");
+    cout << ">>>>  adding EXPENSE transaction  <<<<" << endl << endl;
+    Transaction expense = giveNewTransactionData("expense");
+
+    expensesFile.addTransactionToFile(expense);
+    expenses.push_back(expense);
+
+    cout << endl << "expense had been saved" << endl << endl;
+    system("pause");
+
+}
+
+Transaction TransactionManager::giveNewTransactionData(string type) {
     Transaction transaction;
     char selection;
     string date = "";
@@ -40,7 +53,7 @@ Transaction TransactionManager::giveNewTransactionData() {
     cout << "enter transaction group: ";
     group = SupportingMethods::loadLine();
 
-    transaction.setId(getNewTransactionId());
+    transaction.setId(getNewTransactionId(type));
     transaction.setUserId(LOGGDED_IN_USER_ID);
     transaction.setDate(SupportingMethods::converseDateToInt(date));
     transaction.setAmount(amount);
@@ -50,21 +63,25 @@ Transaction TransactionManager::giveNewTransactionData() {
 }
 
 
-int TransactionManager::getNewTransactionId() {
-    int numberOfTransaction = transactionsFile.getNumberOfTransactionsInFile();
+int TransactionManager::getNewTransactionId(string type) {
+    int numberOfTransaction = 0;
+    if (type == "income")
+        numberOfTransaction = incomesFile.getNumberOfTransactionsInFile();
+    else
+        numberOfTransaction = expensesFile.getNumberOfTransactionsInFile();
     return numberOfTransaction + 1;
 }
 
-vector<Transaction> TransactionManager::findTransactionsFromMonth(int month, int year, int numberOfMonths) {
+vector<Transaction> TransactionManager::findIncomesFromMonth(int month, int year, int numberOfMonths) {
     int monthFromTransaction = 0, yearFromTransaction = 0;
     vector<Transaction> transactionsFromPeriod;
 
     for (int j = 0; j <= numberOfMonths; j++) {
-        for(int i = 0; i < transactions.size(); i++) {
-            monthFromTransaction = SupportingMethods::getMonthFromCustomDate(transactions[i].getDate());
-            yearFromTransaction = SupportingMethods::getYearFromCustomDate(transactions[i].getDate());
+        for(int i = 0; i < incomes.size(); i++) {
+            monthFromTransaction = SupportingMethods::getMonthFromCustomDate(incomes[i].getDate());
+            yearFromTransaction = SupportingMethods::getYearFromCustomDate(incomes[i].getDate());
             if (monthFromTransaction == month && yearFromTransaction == year) {
-                transactionsFromPeriod.push_back(transactions[i]);
+                transactionsFromPeriod.push_back(incomes[i]);
             }
         }
         if (month < 12)
@@ -78,17 +95,27 @@ vector<Transaction> TransactionManager::findTransactionsFromMonth(int month, int
     return transactionsFromPeriod;
 }
 
-vector<Transaction> TransactionManager::sortTransactions(vector<Transaction> transactionsToSort) {
-    sort (transactionsToSort.begin(), transactionsToSort.end());
+vector<Transaction> TransactionManager::findExpensesFromMonth(int month, int year, int numberOfMonths) {
+    int monthFromTransaction = 0, yearFromTransaction = 0;
+    vector<Transaction> transactionsFromPeriod;
 
-    return transactionsToSort;
-}
+    for (int j = 0; j <= numberOfMonths; j++) {
+        for(int i = 0; i < expenses.size(); i++) {
+            monthFromTransaction = SupportingMethods::getMonthFromCustomDate(expenses[i].getDate());
+            yearFromTransaction = SupportingMethods::getYearFromCustomDate(expenses[i].getDate());
+            if (monthFromTransaction == month && yearFromTransaction == year) {
+                transactionsFromPeriod.push_back(expenses[i]);
+            }
+        }
+        if (month < 12)
+            month++;
+        else {
+            year++;
+            month = 1;
+        }
+    }
 
-vector<Transaction> TransactionManager::getTransactionsToDisplay(int startMonth, int startYear, int numberOfMonths) {
-    vector<Transaction> transactions = findTransactionsFromMonth(startMonth, startYear, numberOfMonths);
-    transactions = sortTransactions(transactions);
-
-    return transactions;
+    return transactionsFromPeriod;
 }
 
 void TransactionManager::displayIncomes(vector<Transaction> incomesToDisplay) {
@@ -139,19 +166,11 @@ void TransactionManager::displayBalance() {
 }
 
 void TransactionManager::displayTransactionsFromSelectedMonth(int startMonth, int startYear, int numberOfMonths) {
-    vector<Transaction> transactions = getTransactionsToDisplay(startMonth, startYear, numberOfMonths);
-    vector<Transaction> expenses, incomes;
+    vector<Transaction> incomes = findIncomesFromMonth(startMonth, startYear, numberOfMonths);
+    sort (incomes.begin(), incomes.end());
+    vector<Transaction> expenses = findExpensesFromMonth(startMonth, startYear, numberOfMonths);
+    sort (expenses.begin(), expenses.end());
 
-    for (int i = 0; i < transactions.size(); i++) {
-        if (transactions[i].getType() == "INCOME")
-            incomes.push_back(transactions[i]);
-        else if (transactions[i].getType() == "EXPENSE")
-            expenses.push_back(transactions[i]);
-        else {
-            cout << "there is no such type of transaction.." << endl;
-            system("pause");
-        }
-    }
     system("cls");
     displayIncomes(incomes);
     displayExpenses(expenses);
@@ -182,8 +201,6 @@ void TransactionManager::displayTransactionsFromSelectedPeriod() {
     startDateInteger = SupportingMethods::converseDateToInt(date);
     startMonth = SupportingMethods::getMonthFromCustomDate(startDateInteger);
     startYear = SupportingMethods::getYearFromCustomDate(startDateInteger);
-
-
 
     do {
         cout << "please enter ending date [yyyy-mm]:";

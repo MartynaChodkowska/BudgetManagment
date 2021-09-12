@@ -7,16 +7,16 @@ void BudgetManagment::registerUser() {
 void BudgetManagment::logInUser() {
     userManager.logInUser();
     if(userManager.isUserLoggedIn()) {
-        transactionManager = new TransactionManager (TRANSACTIONS_FILENAME, userManager.getLoggedInUserId());
+        transactionManager = new TransactionManager (INCOMES_FILENAME, EXPENSES_FILENAME, userManager.getLoggedInUserId());
     }
 }
 
 void BudgetManagment::addIncome() {
-    transactionManager->addTransaction("INCOME");
+    transactionManager->addIncome();
 }
 
 void BudgetManagment::addExpense() {
-    transactionManager->addTransaction("EXPENSE");
+    transactionManager->addExpense();
 }
 
 void BudgetManagment::currentMonthBalanceSheet() {
