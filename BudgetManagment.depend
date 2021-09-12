@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1631371196 source:c:\_mcho\_c++\budgetmanagment\main.cpp
+1631458948 source:c:\_mcho\_c++\budgetmanagment\main.cpp
 	<iostream>
 	"BudgetManagment.h"
 
@@ -35,7 +35,7 @@
 1627566265 c:\_mcho\_c++\budgetmanagment\date.h
 	<iostream>
 
-1631371196 source:c:\_mcho\_c++\budgetmanagment\budgetmanagment.cpp
+1631473001 source:c:\_mcho\_c++\budgetmanagment\budgetmanagment.cpp
 	"BudgetManagment.h"
 
 1631303063 source:c:\_mcho\_c++\budgetmanagment\usermanager.cpp
@@ -47,7 +47,7 @@
 	"User.h"
 	"UsersFile.h"
 
-1631371196 c:\_mcho\_c++\budgetmanagment\budgetmanagment.h
+1631459749 c:\_mcho\_c++\budgetmanagment\budgetmanagment.h
 	<iostream>
 	"UserManager.h"
 	"TransactionManager.h"
@@ -113,19 +113,14 @@
 	"SupportingMethods.h"
 	"DateManager.h"
 
-1628168216 c:\_mcho\_c++\budgetmanagment\incomesfile.h
+1631461358 c:\_mcho\_c++\budgetmanagment\incomesfile.h
 	<iostream>
-	<stdlib.h>
-	<fstream>
-	<vector>
-	<iomanip>
 	"Markup.h"
 	"XMLFile.h"
-	"Income.h"
+	"Transaction.h"
 	"SupportingMethods.h"
-	"DateManager.h"
 
-1628324073 source:c:\_mcho\_c++\budgetmanagment\incomesfile.cpp
+1631473736 source:c:\_mcho\_c++\budgetmanagment\incomesfile.cpp
 	"IncomesFile.h"
 
 1627892552 source:c:\_mcho\_c++\budgetmanagment\expense.cpp
@@ -135,19 +130,15 @@
 	<iostream>
 	"Operation.h"
 
-1631280207 source:c:\_mcho\_c++\budgetmanagment\expensesfile.cpp
+1631473736 source:c:\_mcho\_c++\budgetmanagment\expensesfile.cpp
 	"ExpensesFile.h"
 
-1628164340 c:\_mcho\_c++\budgetmanagment\expensesfile.h
+1631461358 c:\_mcho\_c++\budgetmanagment\expensesfile.h
 	<iostream>
-	<stdlib.h>
-	<fstream>
-	<vector>
 	"Markup.h"
 	"XMLFile.h"
-	"Expense.h"
+	"Transaction.h"
 	"SupportingMethods.h"
-	"DateManager.h"
 
 1631280826 source:c:\_mcho\_c++\budgetmanagment\expensemanager.cpp
 	"ExpenseManager.h"
@@ -181,31 +172,32 @@
 1628682309 source:c:\_mcho\_c++\budgetmanagment\balancemanager.cpp
 	"BalanceManager.h"
 
-1631370390 source:c:\_mcho\_c++\budgetmanagment\transaction.cpp
+1631473562 source:c:\_mcho\_c++\budgetmanagment\transaction.cpp
 	"Transaction.h"
 
-1631370390 c:\_mcho\_c++\budgetmanagment\transaction.h
+1631473562 c:\_mcho\_c++\budgetmanagment\transaction.h
 	<iostream>
 
-1631373928 c:\_mcho\_c++\budgetmanagment\transactionmanager.h
+1631473299 c:\_mcho\_c++\budgetmanagment\transactionmanager.h
 	<iostream>
 	<vector>
 	<algorithm>
 	<iomanip>
 	"Transaction.h"
-	"TransactionsFile.h"
+	"IncomesFile.h"
+	"ExpensesFile.h"
 	"SupportingMethods.h"
 
-1631303063 c:\_mcho\_c++\budgetmanagment\transactionsfile.h
+1631459583 c:\_mcho\_c++\budgetmanagment\transactionsfile.h
 	<iostream>
 	"Markup.h"
 	"XMLFile.h"
 	"Transaction.h"
 	"SupportingMethods.h"
 
-1631303063 source:c:\_mcho\_c++\budgetmanagment\transactionsfile.cpp
+1631459939 source:c:\_mcho\_c++\budgetmanagment\transactionsfile.cpp
 	"TransactionsFile.h"
 
-1631374371 source:c:\_mcho\_c++\budgetmanagment\transactionmanager.cpp
+1631473299 source:c:\_mcho\_c++\budgetmanagment\transactionmanager.cpp
 	"TransactionManager.h"
 

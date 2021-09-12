@@ -12,11 +12,12 @@ class BudgetManagment {
 
     UserManager userManager;
     TransactionManager *transactionManager;
-    const string TRANSACTIONS_FILENAME;
+    const string INCOMES_FILENAME;
+    const string EXPENSES_FILENAME;
 
 public:
-    BudgetManagment(string usersFilename, string transactionsFilename)
-        : userManager(usersFilename), TRANSACTIONS_FILENAME(transactionsFilename){
+    BudgetManagment(string usersFilename, string incomesFilename, string expensesFilename)
+        : userManager(usersFilename), INCOMES_FILENAME(incomesFilename), EXPENSES_FILENAME(expensesFilename){
         transactionManager = NULL;
     };
     ~BudgetManagment() {

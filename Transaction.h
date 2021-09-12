@@ -7,8 +7,8 @@ using namespace std;
 
 class Transaction {
     int id, userId, date;
+    string item;
     double amount;
-    string group, type;
 
 public:
     //Transaction(int newId, int newUserId, int, double, string);
@@ -18,17 +18,14 @@ public:
     int getId();
     int getUserId();
     int getDate();
+    string getItem();
     double getAmount();
-    string getGroup();
-    string getType();
 
     void setId(int newId);
     void setUserId(int newUserId);
     void setDate(int newDate);
+    void setItem(string newItem);
     void setAmount(double newAmount);
-    void setGroup(string newGroup);
-    void setType(string newType);
-
 };
 
 

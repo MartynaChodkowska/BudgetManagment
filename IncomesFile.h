@@ -1,5 +1,5 @@
-#ifndef TRANSACTIONSFILE_H
-#define TRANSACTIONSFILE_H
+#ifndef INCOMESFILE_H
+#define INCOMESFILE_H
 
 #include <iostream>
 
@@ -10,17 +10,17 @@
 
 using namespace std;
 
-class TransactionsFile :public XMLFile {
+class IncomesFile :public XMLFile {
     Transaction transaction;
     //Transaction getTransactionData();
 
 public:
-    TransactionsFile(string transactionFilename)
-        : XMLFile (transactionFilename)
+    IncomesFile(string incomesFilename)
+        : XMLFile (incomesFilename)
     {};
     void addTransactionToFile(Transaction transaction);
     vector<Transaction> loadTransactionsFromFile(int loggedInUserId);
     int getNumberOfTransactionsInFile();
 };
 
-#endif // TRANSACTIONSFILE_H
+#endif // INCOMESFILE_H

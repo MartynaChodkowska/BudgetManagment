@@ -1,33 +1,27 @@
-#include "TransactionsFile.h"
+#include "ExpensesFile.h"
 
-void TransactionsFile::addTransactionToFile(Transaction transaction){
+void ExpensesFile::addTransactionToFile(Transaction transaction) {
     CMarkup xmlFile;
     xmlFile.Load(getFilename());
 
-    string transactionType = transaction.getType()+"S";
-
-
-
-    if (!xmlFile.FindElem(transactionType)) {
+    if (!xmlFile.FindElem("EXPENSES")) {
         xmlFile.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-        xmlFile.AddElem(transactionType);
+        xmlFile.AddElem("EXPENSES");
     }
     xmlFile.IntoElem();
-    transactionType = transaction.getType();
-    xmlFile.AddElem(transactionType);
+    xmlFile.AddElem("EXPENSE");
     xmlFile.IntoElem();
-    xmlFile.AddElem("ID", to_string(transaction.getId()));
+    xmlFile.AddElem("EXPENSEID", to_string(transaction.getId()));
     xmlFile.AddElem("USERID", to_string(transaction.getUserId()));
     xmlFile.AddElem("DATE", SupportingMethods::converseDateToString(transaction.getDate()));
+    xmlFile.AddElem("ITEM", transaction.getItem());
     xmlFile.AddElem("AMOUNT", SupportingMethods::converseAmountToShortString(transaction.getAmount()));
-    xmlFile.AddElem("GROUP", transaction.getGroup());
     xmlFile.OutOfElem();
 
     xmlFile.Save(getFilename());
 }
 
-
-vector<Transaction> TransactionsFile::loadTransactionsFromFile(int loggedInUserId) {
+vector<Transaction> ExpensesFile::loadTransactionsFromFile(int loggedInUserId) {
     vector <Transaction> transactionsVector;
     Transaction transaction;
     CMarkup xmlFile;
@@ -35,9 +29,9 @@ vector<Transaction> TransactionsFile::loadTransactionsFromFile(int loggedInUserI
     xmlFile.Load(getFilename());
     xmlFile.ResetMainPos();
 
-    if (xmlFile.FindElem("TRANSACTIONS")) {
+    if (xmlFile.FindElem("EXPENSES")) {
         xmlFile.IntoElem();
-        while(xmlFile.FindElem("TRANSACTION")) {
+        while(xmlFile.FindElem("EXPENSE")) {
             xmlFile.IntoElem();
             xmlFile.FindElem("ID");
             int id = atoi(MCD_2PCSZ(xmlFile.GetData()));
@@ -49,22 +43,18 @@ vector<Transaction> TransactionsFile::loadTransactionsFromFile(int loggedInUserI
                 string dateFromFile = xmlFile.GetData();
                 int date = SupportingMethods::converseDateToInt(dateFromFile);
 
+                xmlFile.FindElem("ITEM");
+                string item = xmlFile.GetData();
+
                 xmlFile.FindElem("AMOUNT");
                 string amountFromFile = xmlFile.GetData();
                 double amount = stod(amountFromFile.substr());
 
-                xmlFile.FindElem("GROUP");
-                string group = xmlFile.GetData();
-
-                xmlFile.FindElem("TYPE");
-                string type = xmlFile.GetData();
-
                 transaction.setId(id);
                 transaction.setUserId(userId);
                 transaction.setDate(date);
+                transaction.setItem(item);
                 transaction.setAmount(amount);
-                transaction.setGroup(group);
-                transaction.setType(type);
 
                 transactionsVector.push_back(transaction);
             }
@@ -74,15 +64,15 @@ vector<Transaction> TransactionsFile::loadTransactionsFromFile(int loggedInUserI
     return transactionsVector;
 }
 
-int TransactionsFile::getNumberOfTransactionsInFile() {
+int ExpensesFile::getNumberOfTransactionsInFile() {
     CMarkup xmlFile;
     xmlFile.Load(getFilename());
     xmlFile.ResetMainPos();
     int numberOfTransactions = 0;
 
-    if (xmlFile.FindElem("TRANSACTIONS")) {
+    if (xmlFile.FindElem("EXPENSES")) {
         xmlFile.IntoElem();
-        while(xmlFile.FindElem("TRANSACTION")) {
+        while(xmlFile.FindElem("EXPENSE")) {
             numberOfTransactions++;
         }
     }

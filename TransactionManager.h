@@ -7,33 +7,36 @@
 #include <iomanip> // setprecision
 
 #include "Transaction.h"
-#include "TransactionsFile.h"
+#include "IncomesFile.h"
+#include "ExpensesFile.h"
 #include "SupportingMethods.h"
 
 using namespace std;
 
 class TransactionManager {
     const int LOGGDED_IN_USER_ID;
-    vector <Transaction> transactions;
-    TransactionsFile transactionsFile;
+    vector <Transaction> incomes, expenses;
+    IncomesFile incomesFile;
+    ExpensesFile expensesFile;
     double totalIncomesAmount, totalExpensesAmount;
 
-    Transaction giveNewTransactionData();
-    int getNewTransactionId();
-    vector<Transaction> findTransactionsFromMonth(int month, int year, int numberOfMonths);
-    vector<Transaction> sortTransactions(vector<Transaction> transactionsToSort);
-    vector<Transaction> getTransactionsToDisplay(int month, int year, int numberOfMonths);
+    Transaction giveNewTransactionData(string transactionType);
+    int getNewTransactionId(string transactionType);
+    vector<Transaction> findIncomesFromMonth(int month, int year, int numberOfMonths);
+    vector<Transaction> findExpensesFromMonth(int month, int year, int numberOfMonths);
     void displayIncomes(vector<Transaction> incomesToDisplay);
     void displayExpenses(vector<Transaction> expensessToDisplay);
     void displayBalance();
     void displayTransactionsFromSelectedMonth(int month, int year, int numberOfMonths);
 
 public:
-    TransactionManager(string transactionsFilename, int loggedInUserId)
-        : transactionsFile (transactionsFilename), LOGGDED_IN_USER_ID (loggedInUserId) {
-        transactions = transactionsFile.loadTransactionsFromFile(loggedInUserId);
+    TransactionManager(string incomesFilename, string expensesFilename, int loggedInUserId)
+        : incomesFile(incomesFilename), expensesFile(expensesFilename), LOGGDED_IN_USER_ID (loggedInUserId) {
+        incomes = incomesFile.loadTransactionsFromFile(loggedInUserId);
+        expenses = expensesFile.loadTransactionsFromFile(loggedInUserId);
     };
-    void addTransaction(string transactionType);
+    void addIncome();
+    void addExpense();
     void displayTransactionsFromCurrentMonth();
     void displayTransactionsFromPreviousMonth();
     void displayTransactionsFromSelectedPeriod();
