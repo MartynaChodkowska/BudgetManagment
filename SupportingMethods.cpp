@@ -113,7 +113,11 @@ bool SupportingMethods::isDateCorrect(string dateToBeChecked) {
     } else if (year == getYearFromCurrentDate() && (month == getMonthFromCurrentDate() && day > getDayFromCurrentDate())) {
         cout << "this date is in the future. try again." << endl;
         return false;
-    } else
+    } else if(date < 20000101){
+    cout << "this date is too far from today. try again." << endl;
+    return false;
+    }
+    else
         return true;
 }
 
