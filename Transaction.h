@@ -11,10 +11,10 @@ class Transaction {
     double amount;
 
 public:
-    //Transaction(int newId, int newUserId, int, double, string);
+    Transaction() {};
     bool operator< (const Transaction &other) const {
         return date < other.date;
-    }
+    };
     int getId();
     int getUserId();
     int getDate();

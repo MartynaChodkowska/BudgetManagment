@@ -23,7 +23,7 @@ public:
     UserManager(string usersFilename) : usersFile(usersFilename) {
         loggedInUserId = 0;
         users = usersFile.loadUsersFromFile();
-    }
+    };
     void registerUser();
     void logInUser();
     void loggedInUserPasswordChange();

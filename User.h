@@ -11,6 +11,7 @@ int id;
 string name, secondname, login, password;
 
 public:
+    User(){};
     int getId();
     string getName();
     string getSecondname();

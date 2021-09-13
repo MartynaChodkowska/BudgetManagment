@@ -1,32 +1,5 @@
 #include "TransactionManager.h"
 
-void TransactionManager::addIncome() {
-
-    system("cls");
-    cout << ">>>>  adding INCOME transaction  <<<<" << endl << endl;
-    Transaction income = giveNewTransactionData("income");
-
-    incomesFile.addTransactionToFile(income);
-    incomes.push_back(income);
-
-    cout << endl << "income had been saved" << endl << endl;
-    system("pause");
-
-}
-
-void TransactionManager::addExpense() {
-
-    system("cls");
-    cout << ">>>>  adding EXPENSE transaction  <<<<" << endl << endl;
-    Transaction expense = giveNewTransactionData("expense");
-
-    expensesFile.addTransactionToFile(expense);
-    expenses.push_back(expense);
-
-    cout << endl << "expense had been saved" << endl << endl;
-    system("pause");
-
-}
 
 Transaction TransactionManager::giveNewTransactionData(string type) {
     Transaction transaction;
@@ -47,7 +20,6 @@ Transaction TransactionManager::giveNewTransactionData(string type) {
     double amount;
     cout << "enter transaction amount [0.00]: ";
     amount = SupportingMethods::loadDouble();
-    //sprawdzanie czy z kropka, jesli nie (przecinek) - zamiana na kropke
 
     string item = "";
     cout << "enter transaction group: ";
@@ -62,7 +34,6 @@ Transaction TransactionManager::giveNewTransactionData(string type) {
     return transaction;
 }
 
-
 int TransactionManager::getNewTransactionId(string type) {
     int numberOfTransaction = 0;
     if (type == "income")
@@ -73,7 +44,6 @@ int TransactionManager::getNewTransactionId(string type) {
 }
 
 vector<Transaction> TransactionManager::findIncomesFromMonth(int startDate, int endDate) {
-    //  int monthFromTransaction = 0, yearFromTransaction = 0;
     int transactionDate = 0;
     vector<Transaction> transactionsFromPeriod;
 
@@ -83,13 +53,6 @@ vector<Transaction> TransactionManager::findIncomesFromMonth(int startDate, int 
             transactionsFromPeriod.push_back(incomes[i]);
         }
     }
-    /* if (month < 12)
-         month++;
-     else {
-         year++;
-         month = 1;
-     }*/
-
     return transactionsFromPeriod;
 }
 
@@ -106,6 +69,7 @@ vector<Transaction> TransactionManager::findExpensesFromMonth(int startDate, int
     return transactionsFromPeriod;
 }
 
+
 void TransactionManager::displayIncomes(vector<Transaction> incomesToDisplay) {
     double totalIncomes = 0;
     cout << ">>>> INCOMES <<<<" << endl;
@@ -113,12 +77,13 @@ void TransactionManager::displayIncomes(vector<Transaction> incomesToDisplay) {
         for(int i = 0; i < incomesToDisplay.size(); i++) {
             cout << "date: " << SupportingMethods::converseDateToString(incomesToDisplay[i].getDate()) << " ";
             cout << showpoint << setprecision (SupportingMethods::countNumbers(incomesToDisplay[i].getAmount())+2);
-            cout << "amount: " << incomesToDisplay[i].getAmount() << "\t";
-            cout << "group: " << incomesToDisplay[i].getItem() << endl;
+            cout << "group: " << incomesToDisplay[i].getItem() << "\t\t";
+            cout << "amount: " << incomesToDisplay[i].getAmount() << endl;
+
             totalIncomes += incomesToDisplay[i].getAmount();
         }
     } else
-        cout << "there is no transaction this month";
+        cout << "there is no transaction";
 
     cout << endl << endl;
     totalIncomesAmount = totalIncomes;
@@ -132,12 +97,13 @@ void TransactionManager::displayExpenses(vector<Transaction> expensessToDisplay)
         for(int i = 0; i < expensessToDisplay.size(); i++) {
             cout << "date: " << SupportingMethods::converseDateToString(expensessToDisplay[i].getDate()) << " ";
             cout << showpoint << setprecision (SupportingMethods::countNumbers(expensessToDisplay[i].getAmount())+2);
-            cout << "amount: " << expensessToDisplay[i].getAmount() << "\t";
-            cout << "group: " << expensessToDisplay[i].getItem() << endl;
+            cout << "group: " << expensessToDisplay[i].getItem() << "\t\t";
+            cout << "amount: " << expensessToDisplay[i].getAmount() << endl;
+
             totalExpenses += expensessToDisplay[i].getAmount();
         }
     } else
-        cout << "there is no transaction this month";
+        cout << "there is no transaction";
 
     cout << endl << endl;
     totalExpensesAmount = totalExpenses;
@@ -166,6 +132,32 @@ void TransactionManager::displayTransactionsFromSelectedMonths(int startDate, in
     displayBalance();
 }
 
+void TransactionManager::addIncome() {
+
+    system("cls");
+    cout << ">>>>  adding INCOME transaction  <<<<" << endl << endl;
+    Transaction income = giveNewTransactionData("income");
+
+    incomesFile.addTransactionToFile(income);
+    incomes.push_back(income);
+
+    cout << endl << "income had been saved" << endl << endl;
+    system("pause");
+}
+
+void TransactionManager::addExpense() {
+
+    system("cls");
+    cout << ">>>>  adding EXPENSE transaction  <<<<" << endl << endl;
+    Transaction expense = giveNewTransactionData("expense");
+
+    expensesFile.addTransactionToFile(expense);
+    expenses.push_back(expense);
+
+    cout << endl << "expense had been saved" << endl << endl;
+    system("pause");
+}
+
 void TransactionManager::displayTransactionsFromCurrentMonth() {
     string date = SupportingMethods::getCurrentDate();
     int startDate =0, endDate = 0, currentDate = SupportingMethods::converseDateToInt(date);
@@ -173,9 +165,7 @@ void TransactionManager::displayTransactionsFromCurrentMonth() {
 
     startDate = currentDate - currentDate%100 + 1;
     endDate = currentDate - currentDate%100 + numberOfDaysInMonth;
-    cout << "just checking what is the start and end date: " << endl << "start: " << startDate << endl << "end: " << endDate << endl;
-    cout <<"month has: " << numberOfDaysInMonth << " days?" << endl;
-    system("pause");
+
     displayTransactionsFromSelectedMonths(startDate, endDate);
 }
 
@@ -186,9 +176,6 @@ void TransactionManager::displayTransactionsFromPreviousMonth() {
 
     startDate = currentDate - currentDate%100 - 100 + 1;
     endDate = currentDate - currentDate%100 - 100 + numberOfDaysInMonth;
-    cout << "just checking what is the start and end date: " << endl << "start: " << startDate << endl << "end: " << endDate << endl;
-    cout <<"month has: " << numberOfDaysInMonth << " days?" << endl;
-    system("pause");
 
     displayTransactionsFromSelectedMonths(startDate, endDate);
 }

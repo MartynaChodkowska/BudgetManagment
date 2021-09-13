@@ -13,7 +13,7 @@ class XMLFile{
     const string FILENAME;
 
 public:
-    XMLFile(string fileName) : FILENAME(fileName) {}
+    XMLFile(string fileName) : FILENAME(fileName) {};
 
     string getFilename();
     bool isFileEmpty();

@@ -96,28 +96,27 @@ bool SupportingMethods::isDateCorrect(string dateToBeChecked) {
     day = getDayFromCustomDate(date);
 
     if (dateToBeChecked.size() != 10) {
-        cout << "date format is wrong. try again." << endl;
+        cout << "date format is wrong. try again." << endl << endl;
         return false;
     } else if (year > getYearFromCurrentDate() || year < 0) {
-        cout << "this is a future year. try again." << endl;
+        cout << "this is a future year. try again." << endl << endl;
         return false;
     } else if (month < 0 || month > 12) {
-        cout << "there is no such month. try again." << endl;
+        cout << "there is no such month. try again." << endl << endl;
         return false;
     } else if (day < 0 || day > getNumberOfDaysInMonth(month, year)) {
-        cout << "month " << month << " has " << getNumberOfDaysInMonth(month, year) << " days. Try again." << endl;
+        cout << "month " << month << " has " << getNumberOfDaysInMonth(month, year) << " days. Try again." << endl << endl;
         return false;
     } else if (year == getYearFromCurrentDate() && (month > getMonthFromCurrentDate())) {
-        cout << "this date is in the future. try again." << endl;
+        cout << "this date is in the future. try again." << endl << endl;
         return false;
     } else if (year == getYearFromCurrentDate() && (month == getMonthFromCurrentDate() && day > getDayFromCurrentDate())) {
-        cout << "this date is in the future. try again." << endl;
+        cout << "this date is in the future. try again." << endl << endl;
         return false;
-    } else if(date < 20000101){
-    cout << "this date is too far from today. try again." << endl;
-    return false;
-    }
-    else
+    } else if(date < 20000101) {
+        cout << "this date is too far from today. try again." << endl << endl;
+        return false;
+    } else
         return true;
 }
 

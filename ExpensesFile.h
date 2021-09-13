@@ -12,8 +12,6 @@ using namespace std;
 
 class ExpensesFile :public XMLFile {
     Transaction transaction;
-    //Transaction getTransactionData();
-
 public:
     ExpensesFile(string expensesFilename)
         : XMLFile (expensesFilename)
