@@ -282,7 +282,7 @@ string SupportingMethods::converseAmountToShortString(double amount) {
 }
 
 int SupportingMethods::countNumbers(int number) {
-    int amountOfNumbers = 0, temp = 0;
+    int amountOfNumbers =0, temp = 0;
     do {
         temp = number%10;
         number -=temp;

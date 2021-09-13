@@ -160,8 +160,9 @@ void TransactionManager::displayBalance() {
     cout << "total Incomes:\t" << totalIncomesAmount << endl;
     cout << showpoint << setprecision (SupportingMethods::countNumbers(totalExpensesAmount)+2);
     cout << "total Expenses:\t" << totalExpensesAmount << endl;
-    cout << showpoint << setprecision (SupportingMethods::countNumbers(totalIncomesAmount)+2);
-    cout <<  "final Balance:\t" << totalIncomesAmount - totalExpensesAmount << endl << endl;
+    double balanace = totalIncomesAmount - totalExpensesAmount;
+    cout << showpoint << setprecision (SupportingMethods::countNumbers(balanace)+2);
+    cout <<  "final Balance:\t" << balanace << endl << endl;
     system("pause");
 }
 
