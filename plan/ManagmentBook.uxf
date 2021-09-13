@@ -91,27 +91,29 @@
       <x>792</x>
       <y>56</y>
       <w>288</w>
-      <h>272</h>
+      <h>296</h>
     </coordinates>
     <panel_attributes>TransactionManager
 -
 - LOGGED_IN_USER_ID : Integer
-- transactions : vector &lt;Transaction&gt; 
-- transactionsFile : TransactionsFile
+- incomes : vector &lt;Transaction&gt; 
+- expenses : vector &lt;Transaction&gt; 
+- incomesFile : IncomesFile
+- expensesFile : ExpenesFile
 - totalIncomesAmount : Double
 - totalExpensesAmount : Double
 - giveNewTransactionData() : Transaction
 - getNewTransactionId() : Integer
-- findTransactionsFromMonth() : vector&lt;Transaction&gt;
-- sortTransactions() : vector&lt;Transaction&gt;
-- getTransactionsToDisplay() : vector&lt;Transaction&gt;
+- findIncomesFromMonth() : vector&lt;Transaction&gt;
+- findExpensesFromMonth() : vector&lt;Transaction&gt;
 - displayIncomes() : void
 - displayExpenses() : void
 - displayBalance() : void
-- displayTransactionsFromSelectedMonth() : void
+- displayTransactionsFromSelectedMonths() : void
 -
 + TransactionManager()
-+ addTransaction(string transactionType);
++ addIncome() : void
++ addExpense() : void
 + displayTransactionsFromCurrentMonth() : void
 + displayTransactionsFromPreviousMonth() : void
 + displayTransactionsFromSelectedPeriod() : void
@@ -146,17 +148,18 @@ bg=black</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>464</x>
-      <y>432</y>
+      <y>408</y>
       <w>352</w>
-      <h>288</h>
+      <h>336</h>
     </coordinates>
     <panel_attributes>SupportingMethods
 -
 _- getDayFromCustomDate() : Integer_
 _- getDayFromCurrentDate() : Integer_
-_- getNumberOfDaysInMonth() : Integer_
 _- isYearIntercalary() : Bool_
 -
++ SupportingMethods()
+_- getNumberOfDaysInMonth() : Integer_
 _+ getCurrentDate() : String_
 _+ converseDateToInt() : Integer_
 _+ converseDateToString(): String_
@@ -171,8 +174,12 @@ _+ loadInteger() : Integer_
 _+ selectOptionFromMainMenu() : Char_
 _+ selectOptionFromUserMenu() : Char_
 _+ conversionFromStringToInt() : Integer_
+_+ conversionFromStringToDouble() : Double_
 _+ conversionFromIntToString() : String_
-_+ calculateDifferenceBetweenIncomesAndExpenses() : Double_
+_+ converseAmountToShortString() : String_
+_+ countNumbers() : Integer_
+_+ makeDoubleAmount() : Double_
+
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -197,30 +204,32 @@ _+ calculateDifferenceBetweenIncomesAndExpenses() : Double_
     <id>UMLClass</id>
     <coordinates>
       <x>152</x>
-      <y>616</y>
+      <y>592</y>
       <w>288</w>
       <h>104</h>
     </coordinates>
     <panel_attributes>UsersFiles
 -
+- getUserData() : User
+- replaceUserDataWithLineWithVerticalDashes() : String
+-
 + UsersFile()
 + addUserToFile() : void
 + loadUsersFromFile() : void
 + saveAllUsersToFile() : void
-- getUserData() : User
-- replaceUserDataWithLineWithVerticalDashes() : String</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>288</x>
-      <y>712</y>
+      <y>688</y>
       <w>288</w>
-      <h>64</h>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>340.0;60.0;10.0;60.0;10.0;10.0</additional_attributes>
+    <additional_attributes>340.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -228,10 +237,10 @@ _+ calculateDifferenceBetweenIncomesAndExpenses() : Double_
       <x>336</x>
       <y>464</y>
       <w>24</w>
-      <h>168</h>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;190.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -239,27 +248,27 @@ _+ calculateDifferenceBetweenIncomesAndExpenses() : Double_
       <x>464</x>
       <y>280</y>
       <w>24</w>
-      <h>168</h>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>792</x>
-      <y>320</y>
+      <y>344</y>
       <w>24</w>
-      <h>128</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>432</x>
-      <y>616</y>
+      <y>592</y>
       <w>48</w>
       <h>24</h>
     </coordinates>
@@ -270,19 +279,19 @@ _+ calculateDifferenceBetweenIncomesAndExpenses() : Double_
     <id>UMLClass</id>
     <coordinates>
       <x>832</x>
-      <y>456</y>
+      <y>432</y>
       <w>128</w>
-      <h>120</h>
+      <h>128</h>
     </coordinates>
     <panel_attributes>Transaction
 -
 - id : Integer
 - userId : Integer
 - date : Integer
+- item : String
 - amount : Double
-- group : String
-- type : String
 -
++ Transaction()
 + operator&lt;() : Bool</panel_attributes>
     <additional_attributes/>
   </element>
@@ -290,7 +299,7 @@ _+ calculateDifferenceBetweenIncomesAndExpenses() : Double_
     <id>UMLClass</id>
     <coordinates>
       <x>992</x>
-      <y>544</y>
+      <y>520</y>
       <w>256</w>
       <h>112</h>
     </coordinates>
@@ -308,18 +317,18 @@ _+ calculateDifferenceBetweenIncomesAndExpenses() : Double_
     <id>Relation</id>
     <coordinates>
       <x>888</x>
-      <y>320</y>
+      <y>344</y>
       <w>24</w>
-      <h>152</h>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>808</x>
-      <y>616</y>
+      <y>592</y>
       <w>200</w>
       <h>24</h>
     </coordinates>
@@ -330,18 +339,18 @@ _+ calculateDifferenceBetweenIncomesAndExpenses() : Double_
     <id>Relation</id>
     <coordinates>
       <x>696</x>
-      <y>648</y>
+      <y>624</y>
       <w>456</w>
-      <h>128</h>
+      <h>152</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;140.0;550.0;140.0;550.0;10.0</additional_attributes>
+    <additional_attributes>10.0;170.0;550.0;170.0;550.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>952</x>
-      <y>552</y>
+      <y>528</y>
       <w>56</w>
       <h>24</h>
     </coordinates>
@@ -353,7 +362,7 @@ layer=-1</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>992</x>
-      <y>424</y>
+      <y>400</y>
       <w>280</w>
       <h>112</h>
     </coordinates>
@@ -371,7 +380,7 @@ layer=-1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>952</x>
-      <y>456</y>
+      <y>432</y>
       <w>56</w>
       <h>24</h>
     </coordinates>
@@ -383,7 +392,7 @@ layer=-1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>808</x>
-      <y>432</y>
+      <y>408</y>
       <w>200</w>
       <h>24</h>
     </coordinates>
@@ -394,11 +403,11 @@ layer=-1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>696</x>
-      <y>528</y>
+      <y>504</y>
       <w>576</w>
-      <h>264</h>
+      <h>288</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;310.0;700.0;310.0;700.0;10.0</additional_attributes>
+    <additional_attributes>10.0;340.0;700.0;340.0;700.0;10.0</additional_attributes>
   </element>
 </diagram>

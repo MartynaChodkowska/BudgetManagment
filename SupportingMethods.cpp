@@ -267,6 +267,14 @@ int SupportingMethods::conversionFromStringToInt(string number) {
     return numberInt;
 }
 
+double SupportingMethods::conversionFromStringToDouble(string number) {
+    double numberDbl;
+    istringstream iss(number);
+    iss >> numberDbl;
+
+    return numberDbl;
+}
+
 string SupportingMethods::conversionFromIntToString(int number) {
     ostringstream ss;
     ss << number;
@@ -293,4 +301,12 @@ int SupportingMethods::countNumbers(int number) {
         amountOfNumbers ++;
     } while (number !=0);
     return amountOfNumbers;
+}
+
+double SupportingMethods::makeDoubleAmount(string amount) {
+    size_t position = amount.find(",");
+    if (position != string::npos) {
+        amount.replace(position,1,".");
+    }
+    return conversionFromStringToDouble(amount);
 }

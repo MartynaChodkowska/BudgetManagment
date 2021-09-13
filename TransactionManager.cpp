@@ -17,9 +17,11 @@ Transaction TransactionManager::giveNewTransactionData(string type) {
         }
     } while(!SupportingMethods::isDateCorrect(date));
 
-    double amount;
+    string amountFromUser = "";
     cout << "enter transaction amount [0.00]: ";
-    amount = SupportingMethods::loadDouble();
+    amountFromUser = SupportingMethods::loadLine();
+    double amount = SupportingMethods::makeDoubleAmount(amountFromUser);
+
 
     string item = "";
     cout << "enter transaction group: ";

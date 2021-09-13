@@ -16,7 +16,7 @@ class SupportingMethods {
     static int getDayFromCurrentDate();
     static bool isYearIntercalary(int year);
 public:
-    SupportingMethods(){};
+    SupportingMethods() {};
     static int getNumberOfDaysInMonth(int month, int year);
     static string getCurrentDate();
     static int converseDateToInt(string operationDate);
@@ -35,9 +35,11 @@ public:
     static char selectOptionFromUserMenu();
     static char selectOptionFromDateMenu();
     static int conversionFromStringToInt(string number);
+    static double conversionFromStringToDouble(string number);
     static string conversionFromIntToString(int number);
     static string converseAmountToShortString(double amount);
     static int countNumbers(int number);
+    static double makeDoubleAmount(string amount);
 
 };
 
