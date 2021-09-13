@@ -22,12 +22,12 @@ class TransactionManager {
 
     Transaction giveNewTransactionData(string transactionType);
     int getNewTransactionId(string transactionType);
-    vector<Transaction> findIncomesFromMonth(int month, int year, int numberOfMonths);
-    vector<Transaction> findExpensesFromMonth(int month, int year, int numberOfMonths);
+    vector<Transaction> findIncomesFromMonth(int startDay, int endDate);
+    vector<Transaction> findExpensesFromMonth(int startDay, int endDate);
     void displayIncomes(vector<Transaction> incomesToDisplay);
     void displayExpenses(vector<Transaction> expensessToDisplay);
     void displayBalance();
-    void displayTransactionsFromSelectedMonth(int month, int year, int numberOfMonths);
+    void displayTransactionsFromSelectedMonths(int startDay, int endDate);
 
 public:
     TransactionManager(string incomesFilename, string expensesFilename, int loggedInUserId)

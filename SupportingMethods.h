@@ -14,10 +14,11 @@ using namespace std;
 class SupportingMethods {
     static int getDayFromCustomDate(int date);
     static int getDayFromCurrentDate();
-    static int getNumberOfDaysInMonth(int month, int year);
+
     static bool isYearIntercalary(int year);
 public:
-   // SupportingMethods() {    }
+    // SupportingMethods() {    }
+    static int getNumberOfDaysInMonth(int month, int year);
     static string getCurrentDate();
     static int converseDateToInt(string operationDate);
     static string converseDateToString(int operationDate);

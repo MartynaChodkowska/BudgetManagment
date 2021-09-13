@@ -72,49 +72,37 @@ int TransactionManager::getNewTransactionId(string type) {
     return numberOfTransaction + 1;
 }
 
-vector<Transaction> TransactionManager::findIncomesFromMonth(int month, int year, int numberOfMonths) {
-    int monthFromTransaction = 0, yearFromTransaction = 0;
+vector<Transaction> TransactionManager::findIncomesFromMonth(int startDate, int endDate) {
+    //  int monthFromTransaction = 0, yearFromTransaction = 0;
+    int transactionDate = 0;
     vector<Transaction> transactionsFromPeriod;
 
-    for (int j = 0; j <= numberOfMonths; j++) {
-        for(int i = 0; i < incomes.size(); i++) {
-            monthFromTransaction = SupportingMethods::getMonthFromCustomDate(incomes[i].getDate());
-            yearFromTransaction = SupportingMethods::getYearFromCustomDate(incomes[i].getDate());
-            if (monthFromTransaction == month && yearFromTransaction == year) {
-                transactionsFromPeriod.push_back(incomes[i]);
-            }
-        }
-        if (month < 12)
-            month++;
-        else {
-            year++;
-            month = 1;
+    for(int i = 0; i < incomes.size(); i++) {
+        transactionDate = incomes[i].getDate();
+        if (transactionDate >= startDate && transactionDate <= endDate) {
+            transactionsFromPeriod.push_back(incomes[i]);
         }
     }
+    /* if (month < 12)
+         month++;
+     else {
+         year++;
+         month = 1;
+     }*/
 
     return transactionsFromPeriod;
 }
 
-vector<Transaction> TransactionManager::findExpensesFromMonth(int month, int year, int numberOfMonths) {
-    int monthFromTransaction = 0, yearFromTransaction = 0;
+vector<Transaction> TransactionManager::findExpensesFromMonth(int startDate, int endDate) {
+    int transactionDate = 0;
     vector<Transaction> transactionsFromPeriod;
 
-    for (int j = 0; j <= numberOfMonths; j++) {
-        for(int i = 0; i < expenses.size(); i++) {
-            monthFromTransaction = SupportingMethods::getMonthFromCustomDate(expenses[i].getDate());
-            yearFromTransaction = SupportingMethods::getYearFromCustomDate(expenses[i].getDate());
-            if (monthFromTransaction == month && yearFromTransaction == year) {
-                transactionsFromPeriod.push_back(expenses[i]);
-            }
-        }
-        if (month < 12)
-            month++;
-        else {
-            year++;
-            month = 1;
+    for(int i = 0; i < expenses.size(); i++) {
+        transactionDate = expenses[i].getDate();
+        if (transactionDate >= startDate && transactionDate <= endDate) {
+            transactionsFromPeriod.push_back(expenses[i]);
         }
     }
-
     return transactionsFromPeriod;
 }
 
@@ -166,10 +154,10 @@ void TransactionManager::displayBalance() {
     system("pause");
 }
 
-void TransactionManager::displayTransactionsFromSelectedMonth(int startMonth, int startYear, int numberOfMonths) {
-    vector<Transaction> incomes = findIncomesFromMonth(startMonth, startYear, numberOfMonths);
+void TransactionManager::displayTransactionsFromSelectedMonths(int startDate, int endDate) {
+    vector<Transaction> incomes = findIncomesFromMonth(startDate, endDate);
     sort (incomes.begin(), incomes.end());
-    vector<Transaction> expenses = findExpensesFromMonth(startMonth, startYear, numberOfMonths);
+    vector<Transaction> expenses = findExpensesFromMonth(startDate, endDate);
     sort (expenses.begin(), expenses.end());
 
     system("cls");
@@ -179,11 +167,30 @@ void TransactionManager::displayTransactionsFromSelectedMonth(int startMonth, in
 }
 
 void TransactionManager::displayTransactionsFromCurrentMonth() {
-    displayTransactionsFromSelectedMonth(SupportingMethods::getMonthFromCurrentDate(),SupportingMethods::getYearFromCurrentDate(), 1);
+    string date = SupportingMethods::getCurrentDate();
+    int startDate =0, endDate = 0, currentDate = SupportingMethods::converseDateToInt(date);
+    int numberOfDaysInMonth = SupportingMethods::getNumberOfDaysInMonth(SupportingMethods::getMonthFromCurrentDate(), SupportingMethods::getYearFromCurrentDate());
+
+    startDate = currentDate - currentDate%100 + 1;
+    endDate = currentDate - currentDate%100 + numberOfDaysInMonth;
+    cout << "just checking what is the start and end date: " << endl << "start: " << startDate << endl << "end: " << endDate << endl;
+    cout <<"month has: " << numberOfDaysInMonth << " days?" << endl;
+    system("pause");
+    displayTransactionsFromSelectedMonths(startDate, endDate);
 }
 
 void TransactionManager::displayTransactionsFromPreviousMonth() {
-    displayTransactionsFromSelectedMonth(SupportingMethods::getMonthFromCurrentDate()-1,SupportingMethods::getYearFromCurrentDate(), 1);
+    string date = SupportingMethods::getCurrentDate();
+    int startDate =0, endDate = 0, currentDate = SupportingMethods::converseDateToInt(date);
+    int numberOfDaysInMonth = SupportingMethods::getNumberOfDaysInMonth(SupportingMethods::getMonthFromCurrentDate()-1, SupportingMethods::getYearFromCurrentDate());
+
+    startDate = currentDate - currentDate%100 - 100 + 1;
+    endDate = currentDate - currentDate%100 - 100 + numberOfDaysInMonth;
+    cout << "just checking what is the start and end date: " << endl << "start: " << startDate << endl << "end: " << endDate << endl;
+    cout <<"month has: " << numberOfDaysInMonth << " days?" << endl;
+    system("pause");
+
+    displayTransactionsFromSelectedMonths(startDate, endDate);
 }
 
 void TransactionManager::displayTransactionsFromSelectedPeriod() {
@@ -194,9 +201,8 @@ void TransactionManager::displayTransactionsFromSelectedPeriod() {
     int numberOfMonths = 0;
 
     do {
-        cout << "please enter starting date [yyyy-mm]:";
+        cout << "please enter starting date [yyyy-mm-dd]:";
         date = SupportingMethods::loadLine();
-        date+="-01";
     } while(!SupportingMethods::isDateCorrect(date));
 
     startDateInteger = SupportingMethods::converseDateToInt(date);
@@ -204,21 +210,18 @@ void TransactionManager::displayTransactionsFromSelectedPeriod() {
     startYear = SupportingMethods::getYearFromCustomDate(startDateInteger);
 
     do {
-        cout << "please enter ending date [yyyy-mm]:";
+        cout << "please enter ending date [yyyy-mm-dd]:";
         date = SupportingMethods::loadLine();
-        date+="-01";
     } while(!SupportingMethods::isDateCorrect(date));
 
     endDateInteger = SupportingMethods::converseDateToInt(date);
     endMonth = SupportingMethods::getMonthFromCustomDate(endDateInteger);
     endYear = SupportingMethods::getYearFromCustomDate(endDateInteger);
 
-
     if ((endYear < startYear) || (endMonth < startMonth&& endYear == startYear)) {
         cout << "selected period is wrong.." << endl;
         system("pause");
-    } else
-        numberOfMonths = (endDateInteger-startDateInteger)/100;
-    displayTransactionsFromSelectedMonth(startMonth, startYear, numberOfMonths);
+    }
 
+    displayTransactionsFromSelectedMonths(startDateInteger, endDateInteger);
 }
